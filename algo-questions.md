@@ -49,47 +49,6 @@ print(current.next_.data) # prints 3
 
 **and** is the keyword !
 
-# remove duplicates in linked list
-
-Without a temporary buffer
-
-Exo 2.1 from HTCI
-
-## Solution
-
-With a temporary buffer :
-
-- first pass construct a hash-map (python dic) that counts the number of occurences of a character
-
-- second pass remove the char until only one instance of each char
-
-Without temporary buffer :
-
-- iterate over the list
-
-- remove in the preceding list all duplicates of the current value
-
-# Find n-th to last item in a singly linked list
-
-## [Solution](n-th-to-last-singly-linked-list.py)
-
-Use two pointers offset by n
-
-## Notes
-
-### Exceptions
-
-User defined exception
-
-```python
-class MyException(Exception):
-    pass
-
-raise MyException("My message")
-```
-
-No need to import Exception !
-
 # First non repeating char in stream 
 
 ## [Solution](first-non-repeating-character-in-stream.py)
@@ -111,6 +70,8 @@ O(n) in space
 # Rotate image 90 degrees
 
 ## [Solution](rotate-im-square.py)
+
+Exo 1.5 in HTCI
 
 Do it in place by cyclic permutations
 
@@ -134,24 +95,11 @@ Exo 1.1 in HTCI
 
 worse case for dic if all keys in dic have same hash value, then complexity is O(n)
 
+## Follow-up
 
-# Matrix col and rows to 0
+If no extra data-structure is allowed
 
-Exo 1.7 from HTCI
+==> check each character against all next characters (O(n^2))
 
-0 rows and columns where a zero is present
-
-## Gotcha
-
-Needs two passes to first note where zeros have to occur and then apply them
-
-## [Solution](row-col-to-zero.py)
-
-# Is_rotation from is_substring
-
-Determine if a string is a rotation from the other
-
-## Solution
-
-First check if equal length, if yes, concatenate first string to itself and check if the second is a substring of this concatenation
+==> sort O(nlog(n)) and check against neighbours, if you can sort without additional data structs !
 
