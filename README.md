@@ -155,3 +155,36 @@ Determine if a string is a rotation from the other
 
 First check if equal length, if yes, concatenate first string to itself and check if the second is a substring of this concatenation
 
+# Quicksort
+
+Inplace sorting in O(n*log(n))
+
+First try : 1h04, lots of problems with <= and indexes !
+
+##[Solution](quicksort.py)
+
+## Notes
+
+### Increment
+
+simply
+
+`a += 1`
+
+### Swap variables 
+
+Evaluation is done from left to right, so
+`a, b = b, a`
+works
+
+### Indexes
+
+backward idx has to start at len(to_sort_list) - 1
+
+
+**carefull!**
+
+```python
+my_list = [1, 2]
+my_list[1:1] = []
+```
