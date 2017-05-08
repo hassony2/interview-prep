@@ -244,3 +244,34 @@ Steps :
 - Find cycle size : advance one pointer while keeping the other fixed
 
 - Find beginning : launch two pointers with offset of cycle size, they meet at beginning !
+
+
+# Stack with min
+
+We want to create a structure that allow us to push pop and query the min in O(1) 
+
+## [Solution](stack-with-min.py)
+
+We notice that the current min is the min of the min up to now and the new value
+
+We therefore keep track of a current min in each node of the stack
+
+But this solution is space intensive ! (lots of duplicate mins)
+
+Possible to keep the mins in another stack, and check when we pop weather we have popped a minimal value
+
+# Hanoi towers
+
+Exo 3.4 of CTCI
+
+Move towers using 3 sticks by never putting a bigger disk on a small disk
+
+Code using 3 stacks
+
+Recursive algorithm, the difficulty is to abstract the problem
+
+An easy way to get started is to code move_tower for tower of size n as a function of move_tower for a tower of size n - 1 
+
+In the end, very few lines of code !
+
+## [Solution](tower-of-hanoi.py) 
