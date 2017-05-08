@@ -188,3 +188,59 @@ backward idx has to start at len(to_sort_list) - 1
 my_list = [1, 2]
 my_list[1:1] = []
 ```
+
+# Negative before positive in place
+
+Rearrange a given array in-place such that all the negative numbers occur before positive numbers.
+(Maintain the order of all -ve and +ve numbers as given in the original array)
+
+
+## [Solution](negative-before-positive.py)
+
+Similar to bubble sort (bubble sort goes through list comparing adjacent pairs and orders them until no swaps are required ==> n^2)
+
+## Complexity 
+
+Worse case : O(n^2) if all negatives are after all positives for instance
+
+# Remove middle node linked list
+
+Given only access to that node
+
+Exo 2.3 from CTCI
+
+## [Solution](remove-node-linkedlist.py)
+
+Copy the data of the next node to the current one and reference to the next.next to next
+
+# Linked list sum
+
+Exo 2.4 from CTCI
+
+## [Solution](sum-linked-list.py)
+
+# Find beginning of cycle in linked list
+
+
+## Notes
+
+### Reference equality 
+
+```python
+if f1 is f2:
+    pass
+```
+
+# Find node at beginning of linked list
+
+Exo 2.5 from CTCI
+
+## [Solution](find-node-beginning-cycle.py)
+
+Steps :
+
+- Find a random node inside the cycle : for this start a fast pointers in front of slow pointer and check when they meet
+
+- Find cycle size : advance one pointer while keeping the other fixed
+
+- Find beginning : launch two pointers with offset of cycle size, they meet at beginning !

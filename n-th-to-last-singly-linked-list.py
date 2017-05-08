@@ -1,31 +1,4 @@
-class LinkListException(Exception):
-    pass
-
-
-class Node:
-    def __init__(self, data=None, next=None):
-        self.data = data
-        self.next = next
-
-
-def linked_list_from_array(array_values):
-    head = Node(array_values[0])
-    next_node = head
-    for value in array_values[1:]:
-        new_node = Node(value)
-        next_node.next = new_node
-        next_node = new_node
-    return head
-
-
-def print_linked_list(head):
-    node = head
-    values = ""
-    values = values + " " + str(node.data)
-    while(node.next is not None):
-        node = node.next
-        values = values + " " + str(node.data)
-    print("linked list values : ", values)
+from src.linkedlist import LinkListException, Node, print_linked_list, linked_list_from_array
 
 
 def find_nth_to_last(head, n):
