@@ -16,3 +16,13 @@ class Stack:
 
     def length(self):
         return len(self.items)
+
+    def peek(self):
+        if(self.items):
+            pop_value = self.items[-1]
+        else:
+            pop_value = None
+        return pop_value
+
+    def is_empty(self):
+        return (self.items == [])

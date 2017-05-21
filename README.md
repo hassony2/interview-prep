@@ -275,3 +275,23 @@ An easy way to get started is to code move_tower for tower of size n as a functi
 In the end, very few lines of code !
 
 ## [Solution](tower-of-hanoi.py) 
+
+# Subarrays summing to zero
+
+Count them
+
+## [Solution](zero-sums.py)
+
+_hint_ : what can you say about the cumulative sums
+
+- if twice the same value --> the inbetween sum is 0
+
+- if zeros : the inbetween sum starting at zero is 0
+
+- you have to take into account that if cumsum has same value more then twice (or once for 0), we have to count the number of ways we can assemble the subarrays (2 parmi number_of_repetitions)
+
+## Remember
+
+math.factorial is the best way to compute factorials
+
+k in between n can be easilly coded using formula fact(n)/(fact(k)*fact(n - k)), but carefull about edge cases : k > n !
