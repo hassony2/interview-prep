@@ -295,3 +295,19 @@ _hint_ : what can you say about the cumulative sums
 math.factorial is the best way to compute factorials
 
 k in between n can be easilly coded using formula fact(n)/(fact(k)*fact(n - k)), but carefull about edge cases : k > n !
+
+# Target three sum
+
+Find the sum of 3 items in a list that is closest to a given target and return the given sum.
+
+## [Solution](three-target-sum)
+
+Brute force is in O(n^3).
+We can get to O(n^2) by sorting the array.
+We then go through the list and use two beginning/end pointers that we update as needed to increase or decrease the proximity to the target
+
+## Remember 
+
+lists have sort method _that returns None_, so we should use it as
+
+`my_list.sort()`
