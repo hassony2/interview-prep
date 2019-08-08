@@ -311,3 +311,20 @@ We then go through the list and use two beginning/end pointers that we update as
 lists have sort method _that returns None_, so we should use it as
 
 `my_list.sort()`
+
+# Largest rectangle in binary matrix
+
+[Problem](https://www.geeksforgeeks.org/maximum-size-rectangle-binary-sub-matrix-1s/)
+
+## Related problems
+
+### Largest square in binary matrix
+
+- Store size of largest square in the top-left direction in bottom-right position
+- if above left and diagonal above-left max square sizes are known
+  - if 1 at current position: max-square size is min of all 3 max square sizes + 1 (min(a[i, j-1], a[i-1, j], a[i-1, j-1]) + 1)
+- time complexity : n^2 (go through the whole array once)
+
+### Largest rectangle under histogram
+
+- TODO [see here](https://www.geeksforgeeks.org/largest-rectangle-under-histogram/)
