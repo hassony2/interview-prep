@@ -95,3 +95,24 @@ If have to write it, with loop better then with stack (won't exceed max stack in
 ## Efficient mod
 
 quo, rest = divmod(10, 3) # quo == 3, rest == 1
+
+## Dynamic programming
+
+Useful when you can solve a problem using optimal solutions of subproblems.
+Two properties:
+- overlapping computation (in brute-force approach same problem is computed several times)
+- optimal subproblems (solution at stage m does indeed depend on solution for previous stages)
+Typically can also be solved by recursion, but recursion sub-optimal: computes subproblems more then once (typically not in O(1) ) !
+
+How to solve:
+- store intermediary solutions
+  - bottom up: (tabulation: save solution for first state(s), second state(s), ...
+  - as you go: memoization: check if result is aleardy available in hash_table where key is state
+    - if yes, use it
+    - if no, compute it then add it
+
+- crucial to determine state as a way that is suitable for tabulation (key is sequence of indexes) or memoization (hashable state)
+
+#### Typical examples
+
+Computing Fibonacci sequence (can be done recursively but much more efficient dynamically with memoization or tabulation).
