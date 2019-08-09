@@ -320,6 +320,8 @@ lists have sort method _that returns None_, so we should use it as
 
 ### Largest square in binary matrix
 
+**Spot dynamic programming problem !**
+
 - Store size of largest square in the top-left direction in bottom-right position
 - if above left and diagonal above-left max square sizes are known
   - if 1 at current position: max-square size is min of all 3 max square sizes + 1 (min(a[i, j-1], a[i-1, j], a[i-1, j-1]) + 1)
@@ -328,3 +330,16 @@ lists have sort method _that returns None_, so we should use it as
 ### Largest rectangle under histogram
 
 - TODO [see here](https://www.geeksforgeeks.org/largest-rectangle-under-histogram/)
+
+## Edit distance
+
+[Problem](https://www.geeksforgeeks.org/edit-distance-dp-5/)
+
+#### Hints
+
+- What if one of the strings is empty ? (--> dist is length of other word)
+- What if both words start with same character ? (--> equivalent to skipping this letter and continuing)
+- Max number of operations ? (--> max(len(word1), len(word2))
+- spot **Dynamic Programming**
+  - What is the state ? (--> advancement in both words: start_idxs for words 1 and 2)
+- [Solution saving intermediate solutions](https://www.geeksforgeeks.org/edit-distance-dp-5/) (although I did with memoization by having (start_idx1, start_idx2) as state keys)
