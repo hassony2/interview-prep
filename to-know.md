@@ -115,4 +115,4 @@ How to solve:
 
 #### Typical examples
 
-Computing Fibonacci sequence (can be done recursively but much more efficient dynamically with memoization or tabulation).
+[Computing Fibonacci sequence](fibonacci.py) (can be done recursively but much more efficient dynamically with memoization or tabulation).
