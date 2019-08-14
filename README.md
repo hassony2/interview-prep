@@ -343,3 +343,32 @@ lists have sort method _that returns None_, so we should use it as
 - spot **Dynamic Programming**
   - What is the state ? (--> advancement in both words: start_idxs for words 1 and 2)
 - [Solution saving intermediate solutions](https://www.geeksforgeeks.org/edit-distance-dp-5/) (although I did with memoization by having (start_idx1, start_idx2) as state keys)
+
+## Interleaving strings
+
+Can s3 be obtained by interleaving s1 and s2 ?
+
+Examples:
+
+- s1="aab", s2="baa", s3="abaaba" --> True
+- s1="aab", s2="baa", s3="abcaba" --> False
+
+Hint:
+- sanity check: if len(s1) + len(s2) != len(s3) return False right away !
+
+### Brute force
+- Create all interleavings of s1 and s2, and check if s3 belongs to them
+- complexity < 2^(len(s1) + len(s2))
+
+### Better
+- spot the dynamic programming problem !
+  - s3[p1 + p2:] is interleave s1[p1:] and s2[p2:] if first character of s3 matches (at least) one of the two remaining strings and the offseted problem by that character is also a valid interleave
+    - s1[p1] == s3[p1+p2] and interleave(s1[p1+1:], s2[p2:], s3[p1+p2+1:]
+    - or s2[p2] == s3[p1+p2] and interleave(s1[p1:], s2[p2+1:], s3[p1+p2+1:]
+  - state: advancement in characters for each word: p1 for s1 and p2 for s2 (which means we are at p1 + p2 for s3)
+- solved with memoization
+
+Notes:
+- string comparison in python
+  - ==, >, <, <= != compares strings lexicographycally
+
