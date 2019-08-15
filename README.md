@@ -373,3 +373,30 @@ Notes:
   - ==, >, <, <= != compares strings lexicographycally
 
 see [solution](https://www.geeksforgeeks.org/find-if-a-string-is-interleaved-of-two-other-strings-dp-33/)
+
+## Min_jump_nb
+
+#### Problem 
+
+Given an array of integers where each element represents the max number of steps that can be made forward from that element. Write a function to return the minimum number of jumps to reach the end of the array.
+
+#### Clarifying questions
+
+- all values are positive, can be zero ?
+- fits in memory ?
+- non-empty list ?
+
+
+#### Brute-force
+- start from beginning, and recursively create a tree of reachable paths
+- complexity ~ max_number_of_jumps^len(array)
+
+#### Better solution O(n^2)
+
+- overlapping optimal subproblems --> **dynamic programming**
+- store at each idx jump budget it is to get there (state: array_idx) 
+
+#### Best solution O(n)
+
+https://www.geeksforgeeks.org/minimum-number-jumps-reach-endset-2on-solution/
+
