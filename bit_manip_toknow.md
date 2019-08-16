@@ -9,8 +9,21 @@
 #### Count set bits
 
 
-Brute force : Sum all bits
+Brute force : Sum all bits, complexity O(log(n))
 
 Better: 
 - Brian Kernighau's algorithm [count_set_bits](count_set_bits.py)
   - Hint : What happens if you "&" x and x - 1
+  - Complexity: O(nb_set_bits)
+
+#### Single nb in array
+
+Brute force:
+  - hash_map: store if found, remove if already present O(n) time, O(n) space
+  - take first element, compare to all next ones, remove both elements if found, O(n^2) time, O(1) space
+
+Better: using bit manipulation [single_nb_inarray](single_nb_inarray.py)
+   - Hint: how do you check that two numbers are the same using bit operators ? (answer: xor (^) is 0) 
+   - compare all numbers using ^ (all pairs will cancel out)
+   - Complexity: O(n) time, O(1) space
+  
