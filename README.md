@@ -400,3 +400,48 @@ Given an array of integers where each element represents the max number of steps
 
 https://www.geeksforgeeks.org/minimum-number-jumps-reach-endset-2on-solution/
 
+
+# Median of sorted arrays
+
+### Reminders on medians of arr
+
+- if odd (len(arr) % 2 == 1): `median = (arr[tot_len / 2 - 1] + arr[tot_len / 2] ) / 2` 
+   - median_idx1 = tot_len / 2 - 1
+   - median_idx2 = tot_len / 2
+- if even (len(arr) % 2 == 0): `median = arr[(tot_len - 1) / 2]`
+   - median_idx1 = median_idx2 = (tot_len - 1) / 2
+   
+   
+## Simple merge-sort solution with 2 pointers 
+
+
+- start with two pointers p1 and p2 at -1
+- check if len of two arrays is odd or even
+- find the array and idx that points to first median_idx 
+- while the size of the array spanned by the two pointers is smaller then median_idx1 + 1 (len is 1 + idx of last value)
+- compare next candidates for both arrays (if both arrays have next candidates)
+- advance pointer for array which has smallest next candidate (at positions p1 + 1 for arr1 and p2 + 2 for arr2)
+
+[median2sorted](median2sorted.py)
+
+- complexity O(len(arr1) + len(arr2))
+
+#### Notes
+- think long and hard about edge cases (before indexing, will you get an outofbound error ?)
+- beware of off-by-one errors !
+  - if we want to idx at position k, we need array of length k + 1
+- Identify clearly
+  - current state:
+    - pointers at given positions
+  - candidate next state
+  - termination condition depending on current state
+
+## faster divide and conquer approach
+
+- notice that media is such that all values on left are small and all values on right are larger and both contain 1/2 of values in array
+- get median of each array
+- compare their values and deduce which parts (right or left) contain the median
+- if med(arr1) == med(arr2): this is the median !
+- if med(arr1) < med(arr2): keep right side of arr1 and left side of arr2
+- if med(arr1) > med(arr2): keep left side or arr1 and right side of arr1
+
