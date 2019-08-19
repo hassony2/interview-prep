@@ -445,3 +445,12 @@ https://www.geeksforgeeks.org/minimum-number-jumps-reach-endset-2on-solution/
 - if med(arr1) < med(arr2): keep right side of arr1 and left side of arr2
 - if med(arr1) > med(arr2): keep left side or arr1 and right side of arr1
 
+[Solution](https://www.geeksforgeeks.org/median-of-two-sorted-arrays-of-different-sizes/)
+
+#### Notes
+
+- lots of base cases to handle !
+- include the comparison value when taking subarray
+- differentiate even and odd cases
+
+
