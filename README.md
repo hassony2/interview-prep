@@ -449,7 +449,7 @@ https://www.geeksforgeeks.org/minimum-number-jumps-reach-endset-2on-solution/
 
 #### Notes
 
-- lots of base cases to handle !
+- lots of base cases to handle  (6!)
 - include the comparison value when taking subarray
 - differentiate even and odd cases
 
