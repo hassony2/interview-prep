@@ -30,6 +30,8 @@ def swap(self, nums, idx1, idx2):
 self.quicksort(nums, 0, len(nums) - 1)
 ```
 
+- If array sorted [1, 2, 3, 4] for instance, in partition after first iteration, j = 0, low_candidate = 1
+
 # Trees
 
 Tree traversal :
