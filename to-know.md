@@ -3,6 +3,8 @@ To Know
 
 # Sortings 
 
+[test them here](https://leetcode.com/problems/sort-an-array/submissions/)
+
 ## Quick-sort
 
 ```python
