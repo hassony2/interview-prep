@@ -1,6 +1,35 @@
 To Know
 =======
 
+# Sortings 
+
+## Quick-sort
+
+```python
+def quicksort(self, nums, low, high):
+    if low < high:
+        pivot_idx = self.partition(nums, low, high)
+        self.quicksort(nums, low, pivot_idx - 1)
+        self.quicksort(nums, pivot_idx + 1, high)
+
+def partition(self, nums, low, pivot_idx):
+    low_candidate = low
+    # all values at successive low_candidate are below pivot
+    # stop when all values have been checked (j reaches end)
+    # low_candidate therefore points to value > pivot
+    for j in range(low, pivot_idx):
+        if nums[j] < nums[pivot_idx]:
+            self.swap(nums, low_candidate, j)
+            low_candidate += 1
+
+    self.swap(nums, low_candidate, pivot_idx)
+    return low_candidate
+
+def swap(self, nums, idx1, idx2):
+    nums[idx1], nums[idx2] = nums[idx2], nums[idx1]
+self.quicksort(nums, 0, len(nums) - 1)
+```
+
 # Trees
 
 Tree traversal :
