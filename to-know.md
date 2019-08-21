@@ -34,6 +34,37 @@ self.quicksort(nums, 0, len(nums) - 1)
 
 - If array sorted [1, 2, 3, 4] for instance, in partition after first iteration, j = 0, low_candidate = 1
 
+## Merge sort
+
+- How many copies ? More then the n allowed ? In which case keep track of low idx and len of subarray and create copies of array only in merge
+
+```python
+def merge_sort(nums):
+    if len(nums) > 1:
+        mid_idx = int(len(nums)/ 2) 
+        left = nums[:mid_idx]
+        right = nums[mid_idx:]
+        merge_sort(left)
+        merge_sort(right)
+        merge(nums, left, right)
+
+def merge(nums, left, right):
+    i, j = 0, 0
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            nums[i + j] = left[i]
+            i += 1
+        else:
+            nums[i + j] = right[j]
+            j += 1
+    while i < len(left):
+        nums[i + j] = left[i]
+        i += 1
+    while j < len(right):
+        nums[i + j] = right[j]
+        j += 1
+```
+
 # Trees
 
 Tree traversal :
