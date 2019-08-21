@@ -65,6 +65,39 @@ def merge(nums, left, right):
         j += 1
 ```
 
+Probably better (less copies):
+
+```python
+
+def merge_sort(nums, low, high):
+
+    if high - low > 1:
+        mid_idx = low + int((high - low) / 2)
+        merge_sort(nums, low, mid_idx)
+        merge_sort(nums, mid_idx, high)
+        merge(nums, low, high, mid_idx)
+
+def merge(nums, low, high, mid_idx):
+    i = 0
+    j = 0
+    left = nums[low:mid_idx]
+    right = nums[mid_idx:high]
+    k = low
+    while i < mid_idx - low and j < high - mid_idx:
+        if left[i] <= right[j]:
+            nums[low + i + j] = left[i]
+            i += 1
+        else:
+            nums[low + i + j] = right[j]
+            j += 1
+    while i < len(left):
+        nums[low + i + j] = left[i]
+        i += 1
+    while j < len(right):
+        nums[low + i + j] = right[j]
+        j += 1
+```
+
 # Trees
 
 Tree traversal :
