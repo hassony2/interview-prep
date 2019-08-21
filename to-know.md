@@ -226,3 +226,54 @@ chars = chars[:idx1] + chars[idx2:]
 # Replace char
 chars = chars.replace(a, b)  # Not in place ! Need to return
 ```
+
+# Arrays
+
+## Useful itertools
+
+```
+import itertools
+
+## Generate permutations
+list(itertools.permutations('abc'))
+# >> [('a', 'b', 'c'), ('a', 'c', 'b'), ('b', 'a', 'c'), ('b', 'c', 'a'), ('c', 'a', 'b'), ('c', 'b', 'a')]
+
+## Nested for loops
+list(itertools.product('abc', 'de', 'f'))
+# >> [('a', 'd', 'f'), ('a', 'e', 'f'), ('b', 'd', 'f'), ('b', 'e', 'f'), ('c', 'd', 'f'), ('c', 'e', 'f')]
+
+## Dénombrement
+
+### combinations
+ list(itertools.combinations('abc', 2))
+# >> [('a', 'b'), ('a', 'c'), ('b', 'c')]
+
+### combinations *with* replacement
+
+# >> list(itertools.combinations_with_replacement('abc', 2))
+
+### Permutations
+
+list(itertools.permutations('abc'))
+# > [('a', 'b', 'c'), ('a', 'c', 'b'), ('b', 'a', 'c'), ('b', 'c', 'a'), ('c', 'a', 'b'), ('c', 'b', 'a')]
+
+# Also allows to get all possible (ordered) combinations of given size
+
+list(itertools.permutations('aac', 2))
+# > [('a', 'a'), ('a', 'c'), ('a', 'a'), ('a', 'c'), ('c', 'a'), ('c', 'a')]
+
+## Cycle through elements
+cycle = itertools.cycle('abc')
+[next(cycle) for idx in range(10)]
+# >> ['a', 'b', 'c', 'a', 'b', 'c', 'a', 'b', 'c', 'a']
+```
+
+### Functional utilities
+
+```python
+### Apply function to inputs
+list(map(pow, (1, 2, 3), (2, 2, 4)))
+
+### Cumsums
+list(itertools.accumulate([1, 2, 3, 4]))
+```
