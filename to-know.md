@@ -213,3 +213,16 @@ How to solve:
 #### Typical examples
 
 [Computing Fibonacci sequence](fibonacci.py) (can be done recursively but much more efficient dynamically with memoization or tabulation).
+
+
+# Strings
+
+### Manipulation
+
+```python
+# Remove substring between idx1 and idx2
+chars = chars[:idx1] + chars[idx2:]
+
+# Replace char
+chars = chars.replace(a, b)  # Not in place ! Need to return
+```
