@@ -128,6 +128,40 @@ def traversal(stack):
 
 for depth-first change stack to queue
 
+## Trie
+
+- Example of trie construction for characters, here to create all possible combinations of sequence of characters from a given sequence (see https://leetcode.com/problems/letter-tile-possibilities/)
+
+```
+def construct_trie(tiles, res=None):
+    for char_idx in range(len(tiles)):
+        rem_tiles = tiles[:char_idx] + tiles[char_idx + 1:]
+        res[tiles[char_idx]] = construct_tree(rem_tiles, {})
+    return res
+    
+def traverse_trie(tree, depth=1):
+    results = []
+    if depth == 0:
+        return ['']
+    elif depth == 1:
+        return tree.keys()
+    else:
+        results.extend(tree.keys())
+        for key in tree.keys():
+            results.extend([key + rem for rem in traverse_tree(tree[key], depth=depth-1)])
+    return results
+
+tiless = ['AAB', 'AB']
+for tiles in tiless:
+    tree = construct_tree(tiles, {})
+    print(tree)
+    results = traverse_tree(tree, depth=len(tiles))
+    print(results)
+    print(len(set(results)))
+```
+
+
+
 # Bit manipulation
 
 ## Python details
