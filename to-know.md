@@ -271,9 +271,18 @@ cycle = itertools.cycle('abc')
 ### Functional utilities
 
 ```python
+import functools
+import itertools
+
 ### Apply function to inputs
 list(map(pow, (1, 2, 3), (2, 2, 4)))
 
 ### Cumsums
 list(itertools.accumulate([1, 2, 3, 4]))
+
+### List of factorials
+list(itertools.accumulate([1, 2, 3, 4, 5], lambda acc, cur: acc * cur))
+# >> [1, 2, 6, 24, 120]
+functools.reduce(lambda acc, cur: acc * cur, range(1, 5 + 1))
+# >> 120
 ```
