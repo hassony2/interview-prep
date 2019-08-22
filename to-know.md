@@ -37,6 +37,23 @@ print(permutations([2, 2, 5]))
 # >> [[2, 2, 5], [2, 5, 2], [2, 2, 5], [2, 5, 2], [5, 2, 2], [5, 2, 2]]
 ```
   - [ ] all combinations
+  
+```
+def combinations(array, rem_len=1):
+    if rem_len == 1:
+        return [[item] for item in array]
+    else:
+        res = []
+        for char_idx in range(len(array)):
+            sub_combs = combinations(array[:char_idx] + array[char_idx + 1:], rem_len=rem_len - 1)
+            for sub_comb in sub_combs:
+                res.append([array[char_idx]] + sub_comb)
+        return res
+
+print(combinations([2, 2, 5], 2))
+# >> [[2, 2], [2, 5], [2, 2], [2, 5], [5, 2], [5, 2]]
+```
+
 - In case itertools is not allowed !  
  
 # Sortings 
