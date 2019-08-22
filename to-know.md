@@ -82,7 +82,7 @@ Tree traversal :
 
 **algo**
 
-```
+```python
 def breadth_first(root):
     if not root:
         return []
@@ -108,7 +108,7 @@ for depth-first change stack to queue
 
 - Example of trie construction for characters, here to create all possible combinations of sequence of characters from a given sequence (see https://leetcode.com/problems/letter-tile-possibilities/)
 
-```
+```python
 def construct_trie(tiles, res=None):
     for char_idx in range(len(tiles)):
         rem_tiles = tiles[:char_idx] + tiles[char_idx + 1:]
