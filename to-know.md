@@ -6,6 +6,13 @@ To Know
 - How large is the data (array, dict, ...)
 - Is there any structure in the data (sorted ? less then some maximum value ?) 
 
+# Recursion in python
+
+### Maximum recursion depth
+
+- ~1000
+- to change it: `sys.setrecursionlimit(1500)`
+
 # Counting
 
 In case itertools is not allowed !  
