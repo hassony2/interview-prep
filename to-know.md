@@ -38,41 +38,13 @@ self.quicksort(nums, 0, len(nums) - 1)
 
 - How many copies ? More then the n allowed ? In which case keep track of low idx and len of subarray and create copies of array only in merge
 
-```python
-def merge_sort(nums):
-    if len(nums) > 1:
-        mid_idx = int(len(nums)/ 2) 
-        left = nums[:mid_idx]
-        right = nums[mid_idx:]
-        merge_sort(left)
-        merge_sort(right)
-        merge(nums, left, right)
-
-def merge(nums, left, right):
-    i, j = 0, 0
-    while i < len(left) and j < len(right):
-        if left[i] <= right[j]:
-            nums[i + j] = left[i]
-            i += 1
-        else:
-            nums[i + j] = right[j]
-            j += 1
-    while i < len(left):
-        nums[i + j] = left[i]
-        i += 1
-    while j < len(right):
-        nums[i + j] = right[j]
-        j += 1
-```
-
 Probably better (less copies):
 
 ```python
 
 def merge_sort(nums, low, high):
-
     if high - low > 1:
-        mid_idx = low + int((high - low) / 2)
+        mid_idx = int((high + low) / 2)
         merge_sort(nums, low, mid_idx)
         merge_sort(nums, mid_idx, high)
         merge(nums, low, high, mid_idx)
@@ -82,8 +54,7 @@ def merge(nums, low, high, mid_idx):
     j = 0
     left = nums[low:mid_idx]
     right = nums[mid_idx:high]
-    k = low
-    while i < mid_idx - low and j < high - mid_idx:
+    while i < len(left) and j < len(right):
         if left[i] <= right[j]:
             nums[low + i + j] = left[i]
             i += 1
