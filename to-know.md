@@ -6,10 +6,9 @@ To Know
 - How large is the data (array, dict, ...)
 - Is there any structure in the data (sorted ? less then some maximum value ?) 
 
-# TODO
+# Counting
 
-- Code to generate:
-  - [ ] all permutations
+- Permutations
   
 ```python
 def permutations(array):
@@ -36,9 +35,10 @@ print(permutations_lc([2, 2, 5]))
 print(permutations([2, 2, 5]))
 # >> [[2, 2, 5], [2, 5, 2], [2, 2, 5], [2, 5, 2], [5, 2, 2], [5, 2, 2]]
 ```
-  - [ ] all combinations
+
+- Combinations
   
-```
+```python
 def combinations(array, rem_len=1):
     if rem_len == 1:
         return [[item] for item in array]
