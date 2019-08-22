@@ -10,6 +10,32 @@ To Know
 
 - Code to generate:
   - [ ] all permutations
+  
+```python
+def permutations(array):
+    if len(array) == 1:
+        return [[array[0]]]
+    else:
+        res = []
+        for char_idx in range(len(array)):
+            rem_perms = permutations(array[:char_idx] + array[char_idx + 1:])
+            for perm in rem_perms:
+                res.append([array[char_idx]] + perm)
+        return res
+
+def permutations_lc(array):
+    """
+    Same but with list comprehensions
+    """
+    if len(array) == 1:
+        return [array]
+    else:
+        return [[array[char_idx]] + perm for char_idx in range(len(array)) for perm in permutations(array[:char_idx] + array[char_idx + 1:])]
+
+print(permutations_lc([2, 2, 5]))
+print(permutations([2, 2, 5]))
+# >> [[2, 2, 5], [2, 5, 2], [2, 2, 5], [2, 5, 2], [5, 2, 2], [5, 2, 2]]
+```
   - [ ] all combinations
 - In case itertools is not allowed !  
  
