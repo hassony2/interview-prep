@@ -6,6 +6,13 @@ To Know
 - How large is the data (array, dict, ...)
 - Is there any structure in the data (sorted ? less then some maximum value ?) 
 
+# TODO
+
+- Code to generate:
+  - [ ] all permutations
+  - [ ] all combinations
+- In case itertools is not allowed !  
+ 
 # Sortings 
 
 [test them here](https://leetcode.com/problems/sort-an-array/submissions/)
