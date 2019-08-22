@@ -8,6 +8,8 @@ To Know
 
 # Counting
 
+In case itertools is not allowed !  
+
 - Permutations
   
 ```python
@@ -54,7 +56,7 @@ print(combinations([2, 2, 5], 2))
 # >> [[2, 2], [2, 5], [2, 2], [2, 5], [5, 2], [5, 2]]
 ```
 
-- In case itertools is not allowed !  
+
  
 # Sortings 
 
