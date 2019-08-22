@@ -1,6 +1,11 @@
 To Know
 =======
 
+# Questions to ask
+
+- How large is the data (array, dict, ...)
+- Is there any structure in the data (sorted ? less then some maximum value ?) 
+
 # Sortings 
 
 [test them here](https://leetcode.com/problems/sort-an-array/submissions/)
