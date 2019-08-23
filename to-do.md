@@ -4,6 +4,7 @@
 
 - [ ] Overview of most basic algorithms with **visualizations** https://github.com/kdn251/interviews
 - [ ] review most basic machine learning: logistic regression, linear least squares, mean, covariances, basic probabilities
+- [ ] hash-maps : how to implement them using only arrays: https://www.youtube.com/watch?v=shs0KM3wKv8
 
 ### Testing as second nature
 
