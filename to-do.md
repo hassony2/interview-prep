@@ -9,6 +9,9 @@
 
 - [ ] take a look at list of exercises https://yangshun.github.io/tech-interview-handbook/best-practice-questions
 
+### Strings
+
+- [ ] ASCII what ? Unicode ? https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/
 
 # Behavioural
 
