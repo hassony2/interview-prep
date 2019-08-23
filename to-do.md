@@ -6,6 +6,7 @@
 - [ ] review most basic machine learning: logistic regression, linear least squares, mean, covariances, basic probabilities
 - [ ] hash-maps : how to implement them using only arrays: https://www.youtube.com/watch?v=shs0KM3wKv8
 - [ ] brush over: https://www.geeksforgeeks.org/top-10-algorithms-in-interview-questions/
+- [ ] basic data structures in python
 
 ### Testing as second nature
 
