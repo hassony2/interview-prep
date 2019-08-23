@@ -6,6 +6,10 @@ To Know
 - How large is the data (array, dict, ...)
 - Is there any structure in the data (sorted ? less then some maximum value ?) 
 
+# Useful semi-advanced python
+
+[real python interview tips](https://realpython.com/python-coding-interview-tips/)
+
 # Recursion in python
 
 ### Maximum recursion depth
