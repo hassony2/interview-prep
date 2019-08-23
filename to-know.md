@@ -200,6 +200,114 @@ for tiles in tiless:
 ```
 
 
+## Complete binary tree:
+
+### Min (/max) heap
+
+### Definition
+
+- **complete** binary tree where all children are lower (/or larger) then current root
+
+### Properties
+- in this case, min (/or max) of tree is always at the root
+
+### Usages
+
+- priority queues (for instance for djisktra algorithm)
+- sorting (by first creating a heap and then repetitively getting the root we get the sorted array) **not heap sort**
+  - complexity (time)
+     - create the heap : easy to show that O(n * log(n)) (n insertions of max log(n) steps)
+       - but actually O(n) (a bit tricky to show, mostly relies on the fact that al lot of the nodes don't need to go all the way down (easy to show that at each depth, work needed to insert is l * 2^l (where l in [0, log(n))], and total work is sum(l*2^l), which is O(n) (proof involves taylor series...)
+     - pop n times : n * log(n) because get_min needs to rebalance the tree at each step, which takes at worse log(n)
+  - complexity (space)
+     - n (needs an additional array)
+
+- related to heap sort:
+ - an **in-place algorithm** whith n*log(n) complexity which iteratively heapifies parts of array, less used then merge-sort and quicksort, so not really useful
+
+ - typically not stable
+### Implementation
+
+- easiest is to store it as an array with
+  - `parent_idx(idx) = (idx  - 1) // 2
+  - `child_left(idx) = 2 * idx + 1
+  - `child_right(idx) = 2 * idx + 2
+- two operations:
+  - insertion
+  - get_min (/get_max)
+
+- after each operation the min (/max) property needs to be preserved
+  - insertion:
+    - append at end of array (<=> as right-most leaf of complete binary tree
+    - bubble_up : then check if smaller (/larger) then parent, if yes, swap and recurse on parent
+    - O(log(node_nb)) because complete binary tree
+  - get_min:
+    - get value of root (this is the min to return)
+    - remove right-most node from array, insert its value at root's position
+    - bubble_down :
+      - if leaf (no right nor left child), finish
+      - if only one (necessarily left) child, swap if needed and recurse (could also directly finish)
+      - if 2 children : check if min_rule is infringed (one of the children is smaller then current)
+         - correct by operating swap between current and smallest among children (this way the selected child node is larger then parent and sibling)
+	 - recurse on swapped position, which now contains the value of the inserted value
+
+```python
+class MinHeap:
+    def __init__(self):
+        self.arr = []
+
+    def insert(self, val):
+        self.arr.append(val)
+        self.bubble_up(len(self.arr) - 1)
+
+    def bubble_up(self, idx):
+        # Stop if reached root
+        if not idx == 0:
+            parent_idx = (idx - 1) // 2
+            # Only continue if current is smaller then parent
+            if self.arr[idx] < self.arr[parent_idx]:
+                # Swap !
+                self.arr[idx], self.arr[parent_idx] = self.arr[parent_idx], self.arr[idx]
+                self.bubble_up(parent_idx)
+
+    def get_min(self):
+        min_val = self.arr[0]
+        # Rebalance by getting last element and putting it to right position
+        last_val = self.arr.pop()
+        if len(self.arr):
+            self.arr[0] = last_val
+            self.bubble_down(0)
+        return min_val
+
+    def bubble_down(self, idx):
+        i_l = 2 * idx + 1
+        i_r = 2 * idx + 2
+        if i_l > len(self.arr) - 1:
+            # Left child outside of array --> current is leaf
+            return
+        elif i_l == len(self.arr) - 1:
+            # Only left child (right child position would be at i_l + 1
+            # which is out of array
+            if self.arr[i_l] < self.arr[idx]:
+                # If needed (leaf is smaller then current), swap
+                self.arr[i_l], self.arr[idx] = self.arr[idx], self.arr[i_l]
+        else:
+            # Both children exist, the only way to respect the heap is to insure
+            # that the smallest of the 3 is at the top
+            if self.arr[i_l] < self.arr[idx] or self.arr[i_r] < self.arr[idx]:
+                # current is not smallest of the two children --> swap needed
+                # given that we know that smallest is not at idx
+                # it is enough to check which of the children is the smallest
+                # to get the smallest of the current and two children
+                if self.arr[i_l] < self.arr[i_r]:
+                    self.arr[i_l], self.arr[idx] = self.arr[idx], self.arr[i_l]
+                    # Current went down, but might have broken the min rule
+                    # one level down --> need to check if rule verified at new position
+                    self.bubble_down(i_l)
+                else:
+                    self.arr[i_r], self.arr[idx] = self.arr[idx], self.arr[i_r]
+                    self.bubble_down(i_r)
+```
 
 # Bit manipulation
 
@@ -289,6 +397,12 @@ How to solve:
 
 
 # Strings
+
+## Complexity
+
+- immutable
+- theoretically insertion is in O(len(array)) (need to copy whole string to new with more space)
+- in practice, appending to strings is optimized in CPython so that it now runs in O(1) and extends the string in-place.
 
 ### Manipulation
 
