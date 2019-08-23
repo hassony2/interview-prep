@@ -7,6 +7,7 @@
 - [ ] hash-maps : how to implement them using only arrays: https://www.youtube.com/watch?v=shs0KM3wKv8
 - [ ] brush over: https://www.geeksforgeeks.org/top-10-algorithms-in-interview-questions/
 - [ ] basic data structures in python
+- [ ] read this (general overview, python oriented) https://medium.com/@ratulsaha/preparing-for-programming-interview-as-a-phd-student-with-python-5f8af8b40d5f
 
 ### Testing as second nature
 
