@@ -1,12 +1,12 @@
 # Technical
 
-### Common algorithms
+### General
 
 - [ ] Overview of most basic algorithms with **visualizations** https://github.com/kdn251/interviews
 - [ ] review most basic machine learning: logistic regression, linear least squares, mean, covariances, basic probabilities
 - [ ] hash-maps : how to implement them using only arrays: https://www.youtube.com/watch?v=shs0KM3wKv8
 - [ ] brush over: https://www.geeksforgeeks.org/top-10-algorithms-in-interview-questions/
-- [ ] basic data structures in python
+- [ ] basic data structures in python https://www.datacamp.com/community/tutorials/data-structures-python
 - [ ] read this (general overview, python oriented) https://medium.com/@ratulsaha/preparing-for-programming-interview-as-a-phd-student-with-python-5f8af8b40d5f
 
 ### Testing as second nature
