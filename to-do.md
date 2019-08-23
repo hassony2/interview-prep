@@ -1,5 +1,9 @@
 # Technical
 
+### Common algorithms
+
+- [ ] Overview of most basic algorithms with **visualizations** https://github.com/kdn251/interviews
+
 ### Testing as second nature
 
 - [ ] compare string equality
