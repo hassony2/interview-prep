@@ -3,6 +3,7 @@
 ### Common algorithms
 
 - [ ] Overview of most basic algorithms with **visualizations** https://github.com/kdn251/interviews
+- [ ] review most basic machine learning: logistic regression, linear least squares, mean, covariances, basic probabilities
 
 ### Testing as second nature
 
