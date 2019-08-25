@@ -453,4 +453,20 @@ https://www.geeksforgeeks.org/minimum-number-jumps-reach-endset-2on-solution/
 - include the comparison value when taking subarray
 - differentiate even and odd cases
 
+# Tree equality
+
+[When are two binary trees equal ?](https://leetcode.com/problems/same-tree/submissions/)
+
+## Solution [tree_comparison.py](tree_comparison.py)
+
+- Compare any traversal of the tree with None inserted when children are missing
+- if None is not inserted 
+
+```
+   1     1
+  /       \
+ 2         2
+```
+collapse to [1, 2] for DFS in-order traversal for instance
+
 
