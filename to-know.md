@@ -353,7 +353,8 @@ del arr[1:3]  # arr -> [1, 3, 4]
 
 ## Useful itertools
 
-`import itertools`
+```python
+import itertools
 
 ## Generate permutations
 list(itertools.permutations('abc'))
