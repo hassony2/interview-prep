@@ -200,6 +200,10 @@ for tiles in tiless:
     print(len(set(results)))
 ```
 
+# List methods
+
+```
+```
 
 
 # Bit manipulation
@@ -261,7 +265,7 @@ import math
 math.factorial(100)
 ```
 
-If have to write it, with loop better then with stack (won't exceed max stack in python which is roughly **1000**).
+If have to write it, with loop better then with (won't exceed max stack in python which is roughly **1000**).
 
 ## Efficient mod
 
@@ -303,10 +307,22 @@ chars = chars.replace(a, b)  # Not in place ! Need to return
 
 # Arrays
 
+
+## List methods
+
+```python
+arr = [1, 2, 3, 3, 4]
+arr.pop()  # >> 4, arr -> [1, 2, 3, 4]
+arr.popleft()  # >> 1, arr -> [2, 3, 4]
+del arr[2]  # arr -> [2, 3]
+
+arr = [1, 2, 3, 3, 4]
+del arr[1:3]  # arr -> [1, 3, 4]
+```
+
 ## Useful itertools
 
-```
-import itertools
+`import itertools`
 
 ## Generate permutations
 list(itertools.permutations('abc'))
