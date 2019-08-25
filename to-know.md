@@ -5,6 +5,7 @@ To Know
 
 - How large is the data (array, dict, ...)
 - Is there any structure in the data (sorted ? less then some maximum value ?) 
+- Do the values in the structure have a specific meaning ?
 
 # Useful semi-advanced python
 
