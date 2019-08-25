@@ -196,6 +196,8 @@ def traversal(root):
         # return self.traversal(root.left) + self.traversal(root.right) + [root_val]
 ```
 
+- [ ] TODO understand why pre-order and post-order together don't allow to reconstruct tree, see [post](https://www.geeksforgeeks.org/if-you-are-given-two-traversal-sequences-can-you-construct-the-binary-tree/), but (pre-order and in-order) or (post-order and in-order) do.
+
 ## Trie
 
 - Example of trie construction for characters, here to create all possible combinations of sequence of characters from a given sequence (see https://leetcode.com/problems/letter-tile-possibilities/)
