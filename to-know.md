@@ -148,7 +148,7 @@ Tree traversal :
 
 ```python
 class Node:
-    def __init__(self, children=None):
+    def __init__(self, children=[]):
         self.children = children
 
 def breadth_first(root):
@@ -170,7 +170,31 @@ def traversal(stack):
         return []
 ```
 
-for depth-first change stack to queue
+## Depth first traversal of Binary trees
+
+- can be in-order, pre-order and post-order depending on where root is inserted
+  - in-order : [left, root, right] (only defined for **Binary**) tree
+  - pre-order : [root, left, right]
+  - post-order: [left, right, root]
+  
+```python
+class Node(object):
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+        
+def traversal(root):
+    if root is None:
+        return [None]
+    else:
+        # Pre-order
+        return [root.val] + self.traversal(root.left) + self.traversal(root.right)
+        # In-order
+        # return self.traversal(root.left) + [root_val] + self.traversal(root.right)
+        # Post-order
+        # return self.traversal(root.left) + self.traversal(root.right) + [root_val]
+```
 
 ## Trie
 
@@ -204,11 +228,14 @@ for tiles in tiless:
     print(len(set(results)))
 ```
 
-# List methods
+# Graphs
 
-```
-```
+## BFS
 
+Same as tree except that need to prevent looping inside cycles by checking if nodes are already visited.
+
+
+## 
 
 # Bit manipulation
 
