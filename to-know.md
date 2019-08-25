@@ -147,12 +147,16 @@ Tree traversal :
 **algo**
 
 ```python
+class Node:
+    def __init__(self, children=None):
+        self.children = children
+
 def breadth_first(root):
     if not root:
         return []
     else:
-        stack = Stack()
-        stack.push(root)
+        stack = []  # Here list is used as stack
+        stack.append(root)
         return traversal(stack)
 
 def traversal(stack):
@@ -160,7 +164,7 @@ def traversal(stack):
         while stack:
             current = stack.pop()
             for child in current.children():
-                stack.push(child)
+                stack.append(child)
             return [current.value] + (traversal(stack))
     else:
         return []
