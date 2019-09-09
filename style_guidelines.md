@@ -47,3 +47,34 @@ def foo(a, b: Optional[Sequence] = None):
 
 - Okay if one-liners
 > For common operations like multiplication, use the functions from the operator module instead of lambda functions. For example, prefer operator.mul to lambda x, y: x * y
+
+## Asserts / Exception
+
+- asserts to check internal logic
+- Exceptions for wrong arguments
+
+## Global variables
+
+- don't 
+- if needed, use module-level constants `MAX_LINE_NB = 8` for instance
+
+## Nesting
+
+- use _ prefix for functions not intended to be used outside of module (rather then nesting)
+- nested functions have read-only access to variables defined in enclosing scopes.
+
+## Default operators and iterators
+
+- use them !
+- `for line in a_file: ...  # vs for line in a_file.readlines()`
+
+## Objects
+
+### Properties
+
+- use property decorator
+```python
+@property
+def area(self):
+    return self.long_side * self.short_side
+```
