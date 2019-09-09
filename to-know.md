@@ -37,6 +37,11 @@ def foo(a, b: Optional[Sequence] = None):
             b = []
 ```
 
+## True/False evaluations
+
+> Python evaluates certain values as False in boolean context. **0, None, [], {}, ''** all evaluate as false in a boolean context.
+- use if possible instead of `if string:  # and not if string == '':`
+
 ## Lambda functions
 
 - Okay if one-liners
