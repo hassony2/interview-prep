@@ -340,6 +340,10 @@ chars = chars[:idx1] + chars[idx2:]
 chars = chars.replace(a, b)  # Not in place ! Need to return
 ```
 
+> Avoid using the + and += operators to accumulate a string within a loop. Since strings are **immutable**, this creates unnecessary temporary objects and results in quadratic rather than linear running time.
+
+**Solution**: add each substring to a list and ''.join the list after the loop terminates 
+
 # Arrays
 
 
