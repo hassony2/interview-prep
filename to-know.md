@@ -25,6 +25,23 @@ descriptive_name = [
 
 ```
 
+## Default values
+
+- Okay as long as **immutable**
+
+> Default arguments are evaluated once at module load time. This may cause problems if the argument is a mutable object such as a list or a dictionary. If the function modifies the object (e.g., by appending an item to a list), the default value is modified.
+
+```python
+def foo(a, b: Optional[Sequence] = None):
+        if b is None:
+            b = []
+```
+
+## Lambda functions
+
+- Okay if one-liners
+> For common operations like multiplication, use the functions from the operator module instead of lambda functions. For example, prefer operator.mul to lambda x, y: x * y
+
 # Questions to ask
 
 - How large is the data (array, dict, ...)
