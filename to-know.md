@@ -41,6 +41,9 @@ def foo(a, b: Optional[Sequence] = None):
 
 > Python evaluates certain values as False in boolean context. **0, None, [], {}, ''** all evaluate as false in a boolean context.
 - use if possible instead of `if string:  # and not if string == '':`
+- use `is None` or `is not None` if value can be None
+- never `if x == False`
+- '0' (str) evaluates to True
 
 ## Lambda functions
 
@@ -52,6 +55,7 @@ def foo(a, b: Optional[Sequence] = None):
 - How large is the data (array, dict, ...)
 - Is there any structure in the data (sorted ? less then some maximum value ?) 
 - Do the values in the structure have a specific meaning ?
+
 
 # Useful semi-advanced python
 
