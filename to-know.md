@@ -412,3 +412,14 @@ list(itertools.accumulate([1, 2, 3, 4, 5], lambda acc, cur: acc * cur))
 functools.reduce(lambda acc, cur: acc * cur, range(1, 5 + 1))
 # >> 120
 ```
+
+# Generators
+
+- Example of generator that reverses a string
+
+```python
+def rev_str(my_str):
+    length = len(my_str)
+    for i in range(length - 1,-1,-1):
+        yield my_str[i]
+```
