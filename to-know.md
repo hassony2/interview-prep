@@ -1,6 +1,30 @@
 To Know
 =======
 
+# [Google python styleguide](https://google.github.io/styleguide/pyguide.html)
+
+## Dict/list comprehensions
+
+Do not use (fall back on standard loop) if:
+- nested (for instance: `[(x, y) for x in range(10) for y in range(5) if x * y > 10]`)
+- complicated to understand 
+> Each portion must fit on one line: mapping expression, for clause, filter expression. Multiple for clauses or filter expressions are not permitted. 
+
+```python
+# Correct examples
+result = [mapping_expr for value in iterable if filter_expr]
+
+result = [{'key': value} for value in iterable
+          if a_long_filter_expression(value)]
+          
+descriptive_name = [
+    transform({'key': key, 'value': value}, color='black')
+    for key, value in generate_iterable(some_input)
+    if complicated_condition_is_met(key, value)
+]
+
+```
+
 # Questions to ask
 
 - How large is the data (array, dict, ...)
