@@ -100,7 +100,8 @@ def partition(self, nums, low, pivot_idx):
 
 def swap(self, nums, idx1, idx2):
     nums[idx1], nums[idx2] = nums[idx2], nums[idx1]
-self.quicksort(nums, 0, len(nums) - 1)
+
+quicksort(nums, 0, len(nums) - 1)
 ```
 
 - If array sorted [1, 2, 3, 4] for instance, in partition after first iteration, j = 0, low_candidate = 1
@@ -113,18 +114,20 @@ Probably better (less copies):
 
 ```python
 
+merge_sort(nums, 0, len(nums))
+
 def merge_sort(nums, low, high):
-    if high - low > 1:
-        mid_idx = int((high + low) / 2)
-        merge_sort(nums, low, mid_idx)
-        merge_sort(nums, mid_idx, high)
+    if low + 2 <= high:  # Continue while at least 2 elements left
+        mid_idx = int((high + low) / 2) 
+        merge_sort(nums, low, mid_idx) # merge_sort up to mid_idx excluded
+        merge_sort(nums, mid_idx, high) # from mid_idx included to high excluded
         merge(nums, low, high, mid_idx)
 
 def merge(nums, low, high, mid_idx):
     i = 0
     j = 0
     left = nums[low:mid_idx]
-    right = nums[mid_idx:high]
+    right = nums[mid_idx:high]  # high is not included
     while i < len(left) and j < len(right):
         if left[i] <= right[j]:
             nums[low + i + j] = left[i]
