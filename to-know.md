@@ -258,6 +258,37 @@ int('10101', 2) # > 21 #in base 2
 
 ```
 
+# Disjoint Set Union
+
+See [leetcode](https://leetcode.com/problems/redundant-connection/solution/) for tutorial.
+
+Useful to keep track of connected components, and making operations on them (efficiently **joining** them (union operation) and **finding** whether two items belong to same component (find operation) )
+
+The main idea is:
+- initialize a list of parents
+- if parent of node is itself, the node is a lead
+- while parent != node we can recursively search the parent for equality with it's parent to bubble up to the lead of the connected component
+- to perform union, we find the two leads and make one the parent of the other (ideally the one that has the least children should become the parent)
+
+```python
+class DSU(object):
+    def __init__(self, max_value):
+        self.parents =  list(range(max_value))  
+        # self.ranks = [0] * max_value
+
+    def find(self, val):
+        if self.parents[val] == val:
+            return val
+        else:
+            return self.find(self.parents[val])
+    
+    def union(self, value1, value2):
+        lead1 = self.find(value1)
+        lead2 = self.find(value2)
+        # Optionnally keep track of rank and add node with highest rand as parent of the other TODO
+        self.parents[lead1] = lead2
+```
+
 # Utilities
 
 ## format
