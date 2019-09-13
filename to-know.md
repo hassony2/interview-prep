@@ -28,6 +28,7 @@ In case itertools is not allowed !
   
 ```python
 def permutations(array):
+    """Order matters"""
     if len(array) == 1:
         return [[array[0]]]
     else:
@@ -38,36 +39,35 @@ def permutations(array):
                 res.append([array[char_idx]] + perm)
         return res
 
-def permutations_lc(array):
-    """
-    Same but with list comprehensions
-    """
-    if len(array) == 1:
-        return [array]
-    else:
-        return [[array[char_idx]] + perm for char_idx in range(len(array)) for perm in permutations(array[:char_idx] + array[char_idx + 1:])]
-
-print(permutations_lc([2, 2, 5]))
-print(permutations([2, 2, 5]))
+arr = [2, 2, 5]
+print(permutations(arr))
 # >> [[2, 2, 5], [2, 5, 2], [2, 2, 5], [2, 5, 2], [5, 2, 2], [5, 2, 2]]
+len(permutations(arr))
+# >> math.factorial(len(arr)) / math.factorial(2)
 ```
 
-- Combinations
+- Arrangements
+
+Like permutations order matters, but only take a subsets instead of whole sequence 
   
 ```python
-def combinations(array, rem_len=1):
+def arrangements(array, rem_len=1):
+    "" Örder matters!"""
     if rem_len == 1:
         return [[item] for item in array]
     else:
         res = []
         for char_idx in range(len(array)):
-            sub_combs = combinations(array[:char_idx] + array[char_idx + 1:], rem_len=rem_len - 1)
+            sub_combs = arrangements(array[:char_idx] + array[char_idx + 1:], rem_len=rem_len - 1)
             for sub_comb in sub_combs:
                 res.append([array[char_idx]] + sub_comb)
         return res
 
-print(combinations([2, 2, 5], 2))
+arr = [2, 2, 5]
+print(arrangements(arr, 2))
 # >> [[2, 2], [2, 5], [2, 2], [2, 5], [5, 2], [5, 2]]
+len(combinations(arr))
+# >> math.factorial(len(arr)) / math.factorial(2) 
 ```
 
 
