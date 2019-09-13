@@ -434,6 +434,8 @@ cycle = itertools.cycle('abc')
 
 ### Functional utilities
 
+But in most cases it is better to use for loops or list comprehensions !
+
 ```python
 import functools
 import itertools
