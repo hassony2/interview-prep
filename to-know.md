@@ -13,6 +13,10 @@ To Know
 
 [real python interview tips](https://realpython.com/python-coding-interview-tips/)
 
+# Basic data structure complexities in python
+
+[dict, set, list, dequeue](https://wiki.python.org/moin/TimeComplexity)
+
 # Recursion in python
 
 ### Maximum recursion depth
