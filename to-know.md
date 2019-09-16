@@ -13,6 +13,10 @@ To Know
 
 [real python interview tips](https://realpython.com/python-coding-interview-tips/)
 
+# Basic data structure complexities in python
+
+[dict, set, list, dequeue](https://wiki.python.org/moin/TimeComplexity)
+
 # Recursion in python
 
 ### Maximum recursion depth
@@ -28,6 +32,7 @@ In case itertools is not allowed !
   
 ```python
 def permutations(array):
+    """Order matters"""
     if len(array) == 1:
         return [[array[0]]]
     else:
@@ -38,36 +43,35 @@ def permutations(array):
                 res.append([array[char_idx]] + perm)
         return res
 
-def permutations_lc(array):
-    """
-    Same but with list comprehensions
-    """
-    if len(array) == 1:
-        return [array]
-    else:
-        return [[array[char_idx]] + perm for char_idx in range(len(array)) for perm in permutations(array[:char_idx] + array[char_idx + 1:])]
-
-print(permutations_lc([2, 2, 5]))
-print(permutations([2, 2, 5]))
+arr = [2, 2, 5]
+print(permutations(arr))
 # >> [[2, 2, 5], [2, 5, 2], [2, 2, 5], [2, 5, 2], [5, 2, 2], [5, 2, 2]]
+len(permutations(arr))
+# >> math.factorial(len(arr)) / math.factorial(2)
 ```
 
-- Combinations
+- Arrangements
+
+Like permutations order matters, but only take a subsets instead of whole sequence 
   
 ```python
-def combinations(array, rem_len=1):
+def arrangements(array, rem_len=1):
+    "" Örder matters!"""
     if rem_len == 1:
         return [[item] for item in array]
     else:
         res = []
         for char_idx in range(len(array)):
-            sub_combs = combinations(array[:char_idx] + array[char_idx + 1:], rem_len=rem_len - 1)
+            sub_combs = arrangements(array[:char_idx] + array[char_idx + 1:], rem_len=rem_len - 1)
             for sub_comb in sub_combs:
                 res.append([array[char_idx]] + sub_comb)
         return res
 
-print(combinations([2, 2, 5], 2))
+arr = [2, 2, 5]
+print(arrangements(arr, 2))
 # >> [[2, 2], [2, 5], [2, 2], [2, 5], [5, 2], [5, 2]]
+len(combinations(arr))
+# >> math.factorial(len(arr)) / math.factorial(2) 
 ```
 
 
@@ -79,38 +83,43 @@ print(combinations([2, 2, 5], 2))
 ## Quick-sort
 
 ```python
-def quicksort(self, nums, low, high):
-    if low < high:
-        pivot_idx = self.partition(nums, low, high)
-        self.quicksort(nums, low, pivot_idx - 1)
-        self.quicksort(nums, pivot_idx + 1, high)
+quicksort(nums, 0, len(nums) - 1)
 
-def partition(self, nums, low, pivot_idx):
+def quicksort(nums, low, high):
+    if low < high:
+        pivot_idx = partition(nums, low, high)
+        quicksort(nums, low, pivot_idx - 1)
+        quicksort(nums, pivot_idx + 1, high)
+
+def partition(nums, low, pivot_idx):
     low_candidate = low
     # all values at successive low_candidate are below pivot
     # stop when all values have been checked (j reaches end)
     # low_candidate therefore points to value > pivot
     for j in range(low, pivot_idx):
         if nums[j] < nums[pivot_idx]:
-            self.swap(nums, low_candidate, j)
+            # insure value at low_candidate < nums[pivot_idx]
+            swap(nums, low_candidate, j)
             low_candidate += 1
 
-    self.swap(nums, low_candidate, pivot_idx)
+    swap(nums, low_candidate, pivot_idx)
     return low_candidate
 
-def swap(self, nums, idx1, idx2):
+def swap(nums, idx1, idx2):
     nums[idx1], nums[idx2] = nums[idx2], nums[idx1]
 
-quicksort(nums, 0, len(nums) - 1)
+
 ```
 
-- If array sorted [1, 2, 3, 4] for instance, in partition after first iteration, j = 0, low_candidate = 1
-
+Complexity:
+- time
+  - average O(nlog(n)) (if array size is divided by a constant at each step)
+  - worse case : O(n^2), if array already sorted [1, 2, 3, 4] for instance, after first iteration 4 is still at last position and reiterate until 3
+- space
+  - O(1)
+  
 ## Merge sort
 
-- How many copies ? More then the n allowed ? In which case keep track of low idx and len of subarray and create copies of array only in merge
-
-Probably better (less copies):
 
 ```python
 
@@ -118,7 +127,7 @@ merge_sort(nums, 0, len(nums))
 
 def merge_sort(nums, low, high):
     if low + 2 <= high:  # Continue while at least 2 elements left
-        mid_idx = int((high + low) / 2) 
+        mid_idx = (high + low) // 2 
         merge_sort(nums, low, mid_idx) # merge_sort up to mid_idx excluded
         merge_sort(nums, mid_idx, high) # from mid_idx included to high excluded
         merge(nums, low, high, mid_idx)
@@ -126,7 +135,8 @@ def merge_sort(nums, low, high):
 def merge(nums, low, high, mid_idx):
     i = 0
     j = 0
-    left = nums[low:mid_idx]
+    # Make copies of both halves
+    left = nums[low:mid_idx] 
     right = nums[mid_idx:high]  # high is not included
     while i < len(left) and j < len(right):
         if left[i] <= right[j]:
@@ -143,36 +153,65 @@ def merge(nums, low, high, mid_idx):
         j += 1
 ```
 
+Complexity
+- time: O(log(n))
+- space: O(n)
+
 # Trees
 
 Tree traversal :
 
-## Breadth first traversal 
+## Breadth first traversal of trees (not necessarily binary)
 
 **algo**
 
 ```python
-class Node:
-    def __init__(self, children=[]):
-        self.children = children
+def bfs(node):
+    queue = [node]  # List is used as queue
+    traversed = []
+    while queue:
+        node = queue.pop(0)
+        traversed.append(node.val)
+        for child in node.children:
+            queue.append(child)
+    return traversed
 
-def breadth_first(root):
-    if not root:
-        return []
+def dfs(node):
+    if node.children:
+        # Preorder
+        traverse = [node.val]
+        for child in node.children:
+            traverse.extend(dfs(child))
     else:
-        stack = []  # Here list is used as stack
-        stack.append(root)
-        return traversal(stack)
+        return [node.val]
+    return traverse
 
-def traversal(stack):
-    if(stack):
-        while stack:
-            current = stack.pop()
-            for child in current.children():
-                stack.append(child)
-            return [current.value] + (traversal(stack))
-    else:
-        return []
+class Node(object):
+    def __init__(self, val, children=None):
+        if children is None:
+            self.children = []
+        else:
+            self.children = children
+        self.val = val
+
+root = Node(1,
+    children=[Node(2), Node(3), Node(4, [Node(5)]), Node(6, [Node(7, [Node(8), Node(9), Node(10)])]), Node(11)]
+    )
+"""
+             1
+          
+  2   3     4     6     11
+           /     /
+          5     7
+              / | \
+             8  9  10
+"""
+res = bfs(root)
+print(res)
+# >> [1, 2, 3, 4, 6, 11, 5, 7, 8, 9, 10]
+res = dfs(root)
+print(res)
+# >> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 ```
 
 ## Depth first traversal of Binary trees
@@ -433,6 +472,8 @@ cycle = itertools.cycle('abc')
 ```
 
 ### Functional utilities
+
+But in most cases it is better to use for loops or list comprehensions !
 
 ```python
 import functools
