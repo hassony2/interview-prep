@@ -199,7 +199,6 @@ for tiles in tiless:
     print(len(set(results)))
 ```
 
-
 ## Complete binary tree:
 
 ### Min (/max) heap
@@ -309,6 +308,94 @@ class MinHeap:
                     self.bubble_down(i_r)
 ```
 
+# Hash Table
+
+- if chaining is allwed, in each table bin is stored a list of (key, value) tuples where key is the immutable non-hashed key
+- if keys are integers, simplest hash function : `hash = key % table_size`
+- basic operations : **set**(key, val) **get**(key) **delete**(key)
+
+### Notes and Traps
+
+- raise correct (most specific needed exceptions): `KeyError`
+- DO NOT DO [[]] * 3 to initalize table, it initializes a **single list** with 3 references
+
+```python
+buggy_list = [[]] * 3   # > [[], [], []]
+buggy_list[0].append(2)  # > [[2], [2], [2]]
+```python
+
+### Implementation
+
+class HashTable:
+    def __init__(self, table_size=10):
+        self.table_size = table_size
+        self.table = [[] for _ in range(self.table_size)]
+
+    def hash_func(self, key):
+    	# Basic hash_function for integers
+        return key % self.table_size
+
+    def set(self, key, value):
+        hash_k = self.hash_func(key)
+        chain = self.table[hash_k]
+	# If present, replace (key, value) at correct position
+        for chain_idx, (chain_k, _) in enumerate(chain):
+            if chain_k == key:
+                chain[chain_idx] = (key, value)
+                return
+	# Else, chain new value
+        chain.append((key, value))
+
+    def get(self, query):
+        hash_k = self.hash_func(query)
+        chain = self.table[hash_k]
+        for key, val in chain:
+            if key == query:
+                return val
+        keys = [key for key, _ in chain]
+        raise KeyError('key {query} with hash {hash_k} not in {keys}'.format(query=query, hash_k=hash_k, keys=keys))
+
+
+    def delete(self, key):
+        hash_k = self.hash_func(key)
+        chain = self.table[hash_k]
+        for chain_idx in range(len(chain)):
+            if key == chain[chain_idx][0]:
+                val = chain.pop(chain_idx)[1]
+                return val
+        raise KeyError('key {key} not found at hash_bin with key {hash_k}'.format(key=key, hash_k=hash_k))
+
+```
+
+# Djikstra
+
+Run [djikstra_graph](djikstra_graph.py)
+
+```python
+def djikstra(edges, start_node):
+    # Get unique nodes
+    to_visit = [start_node]
+    visited = []
+    distances = {start_node: 0}
+    # Keep track of paths by memorizing candidate parent
+    parents = {start_node: None}
+    while len(to_visit):
+        # Sort nodes by current distance to source and select the closest one
+        min_node, min_dist = sorted([(node, distances[node]) for node in to_visit], key=lambda x: x[1])[0]
+        to_visit.remove(min_node)
+        # Get edges that link selected node and other nodes, and not already visited
+        neigh_edges = [edge for edge in edges if edge[0] == min_node and edge[1] not in visited]
+        neigh_nodes = [edge[1] for edge in neigh_edges]
+        to_visit += neigh_nodes
+        visited.append(min_node)
+        for neigh_edge in neigh_edges:
+            _, target, dist = neigh_edge
+            if target not in distances or dist + min_dist < distances[target]:
+                distances[target] = dist + min_dist
+                parents[target] = min_node
+    return distances, parents
+```
+
 # Bit manipulation
 
 ## Python details
@@ -412,9 +499,33 @@ chars = chars[:idx1] + chars[idx2:]
 
 # Replace char
 chars = chars.replace(a, b)  # Not in place ! Need to return
+
+# Test if substring in string
+'abc' in 'slfj'  # >> False
+'abc' in 'slabcfj'  # >> True
 ```
 
 # Arrays
+
+## Manipulating lists
+
+- insert items
+  - `arr.append(val)`
+  - `arr.insert(idx, val)` # TODO check
+- remove items
+  - `arr.pop(idx_to_pop)`: Removes item by idx defaults to last element (-1), returns element
+  - `arr.remove(val)`: Removes first occurence of value in list: arr.remove(val), returns None
+- `arr.sort(val)`: Inplace sorting, returns None
+- `sorted(arr): returns sorted array in **ascending** order
+- `from collections import deque`  *deque* spelled like this !
+  - for stack: `append()` and `pop()`
+  - for queue: `append()` and `popleft()`
+
+## Manipulating sets
+
+- sets are mutable, but can only contain **hashable** elements (tuples, ints, floats, strings, ...)
+  - `myset.add(val)` --> `.add()` to add one item
+  - `myset.update([val1, val2, val3])` --> `.update(some_iterable)`
 
 ## Useful itertools
 
