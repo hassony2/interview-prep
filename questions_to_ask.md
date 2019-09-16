@@ -30,16 +30,15 @@
 > Handle uncertainty of outcomes.
 
 - What was the most difficult bug that you fixed in the past 6 months?
- 
-> BatchNorm issues (peaks on validation data)
-  - Cornered down the issue
-  - Asked an expert
-  - train with 'frozen batchnorm'
-> Code 3x slower in project compared to outside 
-  - dichotomy search on code to find where the problem arises
-> Object regularization
-  - change of scale
-  - manually derive and reason about weighting
+  -  BatchNorm issues (peaks on validation data)
+    - Cornered down the issue
+    - Asked an expert
+    - train with 'frozen batchnorm'
+  - Code 3x slower in project compared to outside 
+    - dichotomy search on code to find where the problem arises
+  - Object regularization
+    - change of scale
+    - manually derive and reason about weighting
 
 - How do you tackle challenges? Name a difficult challenge you faced while working on a project, how you overcame it, and what you learned.
 > When to push and when quit. Moving away from action recognition after 3/4 months.
