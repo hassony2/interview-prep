@@ -3,3 +3,7 @@
 Check and **do not use** reserved words in python
 
 min, hash, max, map, filter, del, ..
+
+# Google doc shortcuts
+
+Ctrl+h: search and replace (useful for renaming variables)
