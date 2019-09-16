@@ -1,4 +1,4 @@
-def traverse_trie(tree, depth=1):
+def traverse_tree(tree, depth=1):
     results = []
     if depth == 0:
         return ['']
@@ -10,7 +10,7 @@ def traverse_trie(tree, depth=1):
             results.extend([key + rem for rem in traverse_tree(tree[key], depth=depth-1)])
     return results
 
-def construct_trie(tiles, res=None):
+def construct_tree(tiles, res=None):
     for char_idx in range(len(tiles)):
         rem_tiles = tiles[:char_idx] + tiles[char_idx + 1:]
         res[tiles[char_idx]] = construct_tree(rem_tiles, {})
