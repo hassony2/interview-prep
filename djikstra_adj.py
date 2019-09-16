@@ -12,17 +12,18 @@ def djikstra(adj_matrix, start_idx=0):
 
     # Select node with lowest dist
     while len(to_vis):
+        # This operation has time complexity V where V is the number of edges that are still to visit (worse case, ~total number of edges)
+        # It can be made log(V) by using a min heap, which can be created in V time, and get_min and add_val are in log(V_to_visit)
         min_node, min_dist = sorted([(start_idx, dists[start_idx]) for start_idx in to_vis], key=lambda x: x[1])[0]
-        to_vis = [node for node in to_vis if node != min_node]
-        # from collections improt 
+        to_vis = [node for node in to_vis if node != min_node] 
         visited.append(min_node)
 
         neighbor_dists = adj_matrix[min_node]
         for neigh_idx, neigh_dist in enumerate(neighbor_dists):
+            # Nones in adjacency matrix mark absent paths
             if neigh_dist is not None and neigh_idx != min_node:
                 if min_dist + neigh_dist < dists[neigh_idx]:
                     dists[neigh_idx] = min_dist + neigh_dist
-                    print(dists)
                     if neigh_idx not in to_vis and neigh_idx not in visited:
                         to_vis.append(neigh_idx)
     return dists
@@ -37,6 +38,7 @@ def djikstra_with_path(adj_matrix, start_idx=0):
     for idx in range(len(adj_matrix)):
         if idx != start_idx:
             dists[idx] = float("inf")
+    # Aggregate parents in hash map which points from child to parent
     parents = {idx: None for idx in range(len(adj_matrix))}
 
     # Select node with lowest dist
@@ -51,6 +53,7 @@ def djikstra_with_path(adj_matrix, start_idx=0):
             if neigh_dist is not None and neigh_idx != min_node:
                 if min_dist + neigh_dist < dists[neigh_idx]:
                     dists[neigh_idx] = min_dist + neigh_dist
+                    # Remember current best parent
                     parents[neigh_idx] = min_node
                     if neigh_idx not in to_vis and neigh_idx not in visited:
                         to_vis.append(neigh_idx)
