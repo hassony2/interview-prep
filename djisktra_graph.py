@@ -12,7 +12,7 @@ def djikstra(edges, start_node):
         # Sort nodes by current distance to source and select the closest one
         min_node, min_dist = sorted([(node, distances[node]) for node in to_visit], key=lambda x: x[1])[0]
         to_visit.remove(min_node)
-        # Get edges that link selected nodes and other nodes not already visited
+        # Select edges that link selected nodes and other nodes not already visited
         neigh_edges = [edge for edge in edges if edge[0] == min_node and edge[1] not in visited]
         neigh_nodes = [edge[1] for edge in neigh_edges]
         to_visit += neigh_nodes
@@ -25,6 +25,7 @@ def djikstra(edges, start_node):
     return distances, parents
 
 def get_path(parents, node_idx):
+    # Path is obtained by going up through the parent hash map
     cur_idx = node_idx
     path = [cur_idx]
     while parents[cur_idx] is not None:
