@@ -12,6 +12,7 @@ def count_set_bits(bits):
 
 
 def count_set_bitscheck(bits):
+    # Note that two first characters of bin(integ) are "0b" and "-0b" if integ is negative
     return sum([1 for idx in str(bin(bits)) if idx == "1"])
 
 
