@@ -22,6 +22,9 @@ Brute force : Sum all bits, complexity O(log(n))
 Better: 
 - Brian Kernighau's algorithm [count_set_bits](count_set_bits.py)
   - Hint : What happens if you "&" x and x - 1
+  - Solution: 
+    - bits & bits - 1 flips all bits up to first set bit
+    - doesn't touch anything on the left side of set bit
   - Complexity: O(nb_set_bits)
 
 #### Single nb in array
