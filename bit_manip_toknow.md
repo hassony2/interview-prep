@@ -25,6 +25,8 @@ Better:
   - Solution: 
     - bits & bits - 1 flips all bits up to first set bit
     - doesn't touch anything on the left side of set bit
+    - iterate while residual is > 0
+    - and at each time set residual = residual & (residual - 1), and increment a counter, as we have flipped to 0 the first set bit from the right
   - Complexity: O(nb_set_bits)
 
 #### Single nb in array
