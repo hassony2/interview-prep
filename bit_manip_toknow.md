@@ -2,7 +2,15 @@
 
 - Get bit string from integer `bin(323)  # '0b101000011'`
 - Apply bit operations on integers `323 & 23  # 3` as bin(323) & bin(23) **will fail** because & is not supported by strings
-- operators : &, |, ^ (exclusive or, if both are 0 --> 1), ~ (flips == complements), x >> y (right shift: x * 2^y), x << y (left shift: x / 2 ^y)
+- operators : &, |, ^ (exclusive or, if both are 0 --> 1), ~ (flips == complements),
+
+  - right shift: x >> y, <=> x * pow(2, y)
+  - left shift: x << y, <=> x // pow(2, y)
+  
+```python
+233 >> 3  # 29
+233 // pow(2, 3)  # 29
+```
  
 ## Exercises
 

@@ -1,14 +1,21 @@
 To Know
 =======
 
+
 # Questions to ask
 
 - How large is the data (array, dict, ...)
 - Is there any structure in the data (sorted ? less then some maximum value ?) 
+- Do the values in the structure have a specific meaning ?
+
 
 # Useful semi-advanced python
 
 [real python interview tips](https://realpython.com/python-coding-interview-tips/)
+
+# Basic data structure complexities in python
+
+[dict, set, list, dequeue](https://wiki.python.org/moin/TimeComplexity)
 
 # Recursion in python
 
@@ -25,6 +32,7 @@ In case itertools is not allowed !
   
 ```python
 def permutations(array):
+    """Order matters"""
     if len(array) == 1:
         return [[array[0]]]
     else:
@@ -35,36 +43,35 @@ def permutations(array):
                 res.append([array[char_idx]] + perm)
         return res
 
-def permutations_lc(array):
-    """
-    Same but with list comprehensions
-    """
-    if len(array) == 1:
-        return [array]
-    else:
-        return [[array[char_idx]] + perm for char_idx in range(len(array)) for perm in permutations(array[:char_idx] + array[char_idx + 1:])]
-
-print(permutations_lc([2, 2, 5]))
-print(permutations([2, 2, 5]))
+arr = [2, 2, 5]
+print(permutations(arr))
 # >> [[2, 2, 5], [2, 5, 2], [2, 2, 5], [2, 5, 2], [5, 2, 2], [5, 2, 2]]
+len(permutations(arr))
+# >> math.factorial(len(arr)) / math.factorial(2)
 ```
 
-- Combinations
+- Arrangements
+
+Like permutations order matters, but only take a subsets instead of whole sequence 
   
 ```python
-def combinations(array, rem_len=1):
+def arrangements(array, rem_len=1):
+    "" Örder matters!"""
     if rem_len == 1:
         return [[item] for item in array]
     else:
         res = []
         for char_idx in range(len(array)):
-            sub_combs = combinations(array[:char_idx] + array[char_idx + 1:], rem_len=rem_len - 1)
+            sub_combs = arrangements(array[:char_idx] + array[char_idx + 1:], rem_len=rem_len - 1)
             for sub_comb in sub_combs:
                 res.append([array[char_idx]] + sub_comb)
         return res
 
-print(combinations([2, 2, 5], 2))
+arr = [2, 2, 5]
+print(arrangements(arr, 2))
 # >> [[2, 2], [2, 5], [2, 2], [2, 5], [5, 2], [5, 2]]
+len(combinations(arr))
+# >> math.factorial(len(arr)) / math.factorial(2) 
 ```
 
 
@@ -76,52 +83,61 @@ print(combinations([2, 2, 5], 2))
 ## Quick-sort
 
 ```python
-def quicksort(self, nums, low, high):
-    if low < high:
-        pivot_idx = self.partition(nums, low, high)
-        self.quicksort(nums, low, pivot_idx - 1)
-        self.quicksort(nums, pivot_idx + 1, high)
+quicksort(nums, 0, len(nums) - 1)
 
-def partition(self, nums, low, pivot_idx):
+def quicksort(nums, low, high):
+    if low < high:
+        pivot_idx = partition(nums, low, high)
+        quicksort(nums, low, pivot_idx - 1)
+        quicksort(nums, pivot_idx + 1, high)
+
+def partition(nums, low, pivot_idx):
     low_candidate = low
     # all values at successive low_candidate are below pivot
     # stop when all values have been checked (j reaches end)
     # low_candidate therefore points to value > pivot
     for j in range(low, pivot_idx):
         if nums[j] < nums[pivot_idx]:
-            self.swap(nums, low_candidate, j)
+            # insure value at low_candidate < nums[pivot_idx]
+            swap(nums, low_candidate, j)
             low_candidate += 1
 
-    self.swap(nums, low_candidate, pivot_idx)
+    swap(nums, low_candidate, pivot_idx)
     return low_candidate
 
-def swap(self, nums, idx1, idx2):
+def swap(nums, idx1, idx2):
     nums[idx1], nums[idx2] = nums[idx2], nums[idx1]
-self.quicksort(nums, 0, len(nums) - 1)
+
+
 ```
 
-- If array sorted [1, 2, 3, 4] for instance, in partition after first iteration, j = 0, low_candidate = 1
-
+Complexity:
+- time
+  - average O(nlog(n)) (if array size is divided by a constant at each step)
+  - worse case : O(n^2), if array already sorted [1, 2, 3, 4] for instance, after first iteration 4 is still at last position and reiterate until 3
+- space
+  - O(1)
+  
 ## Merge sort
 
-- How many copies ? More then the n allowed ? In which case keep track of low idx and len of subarray and create copies of array only in merge
-
-Probably better (less copies):
 
 ```python
 
+merge_sort(nums, 0, len(nums))
+
 def merge_sort(nums, low, high):
-    if high - low > 1:
-        mid_idx = int((high + low) / 2)
-        merge_sort(nums, low, mid_idx)
-        merge_sort(nums, mid_idx, high)
+    if low + 2 <= high:  # Continue while at least 2 elements left
+        mid_idx = (high + low) // 2 
+        merge_sort(nums, low, mid_idx) # merge_sort up to mid_idx excluded
+        merge_sort(nums, mid_idx, high) # from mid_idx included to high excluded
         merge(nums, low, high, mid_idx)
 
 def merge(nums, low, high, mid_idx):
     i = 0
     j = 0
-    left = nums[low:mid_idx]
-    right = nums[mid_idx:high]
+    # Make copies of both halves
+    left = nums[low:mid_idx] 
+    right = nums[mid_idx:high]  # high is not included
     while i < len(left) and j < len(right):
         if left[i] <= right[j]:
             nums[low + i + j] = left[i]
@@ -137,35 +153,94 @@ def merge(nums, low, high, mid_idx):
         j += 1
 ```
 
+Complexity
+- time: O(log(n))
+- space: O(n)
+
 # Trees
 
 Tree traversal :
 
-## Breadth first traversal 
+## Breadth first traversal of trees (not necessarily binary)
 
 **algo**
 
 ```python
-def breadth_first(root):
-    if not root:
-        return []
-    else:
-        stack = Stack()
-        stack.push(root)
-        return traversal(stack)
+def bfs(node):
+    queue = [node]  # List is used as queue
+    traversed = []
+    while queue:
+        node = queue.pop(0)
+        traversed.append(node.val)
+        for child in node.children:
+            queue.append(child)
+    return traversed
 
-def traversal(stack):
-    if(stack):
-        while stack:
-            current = stack.pop()
-            for child in current.children():
-                stack.push(child)
-            return [current.value] + (traversal(stack))
+def dfs(node):
+    if node.children:
+        # Preorder
+        traverse = [node.val]
+        for child in node.children:
+            traverse.extend(dfs(child))
     else:
-        return []
+        return [node.val]
+    return traverse
+
+class Node(object):
+    def __init__(self, val, children=None):
+        if children is None:
+            self.children = []
+        else:
+            self.children = children
+        self.val = val
+
+root = Node(1,
+    children=[Node(2), Node(3), Node(4, [Node(5)]), Node(6, [Node(7, [Node(8), Node(9), Node(10)])]), Node(11)]
+    )
+"""
+             1
+          
+  2   3     4     6     11
+           /     /
+          5     7
+              / | \
+             8  9  10
+"""
+res = bfs(root)
+print(res)
+# >> [1, 2, 3, 4, 6, 11, 5, 7, 8, 9, 10]
+res = dfs(root)
+print(res)
+# >> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 ```
 
-for depth-first change stack to queue
+## Depth first traversal of Binary trees
+
+- can be in-order, pre-order and post-order depending on where root is inserted
+  - in-order : [left, root, right] (only defined for **Binary**) tree
+  - pre-order : [root, left, right]
+  - post-order: [left, right, root]
+  
+```python
+class Node(object):
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+        
+def traversal(root):
+    if root is None:
+        return [None]
+    else:
+        # Pre-order
+        return [root.val] + self.traversal(root.left) + self.traversal(root.right)
+        # In-order
+        # return self.traversal(root.left) + [root_val] + self.traversal(root.right)
+        # Post-order
+        # return self.traversal(root.left) + self.traversal(root.right) + [root_val]
+```
+
+- [ ] TODO understand why pre-order and post-order together don't allow to reconstruct tree, see [post](https://www.geeksforgeeks.org/if-you-are-given-two-traversal-sequences-can-you-construct-the-binary-tree/), but (pre-order and in-order) or (post-order and in-order) do.
 
 ## Trie
 
@@ -367,7 +442,9 @@ class HashTable:
 
 ```
 
-# Djikstra
+# Graphs
+
+## Djikstra
 
 Run [djikstra_graph](djikstra_graph.py)
 
@@ -396,6 +473,13 @@ def djikstra(edges, start_node):
     return distances, parents
 ```
 
+## BFS
+
+Same as tree except that need to prevent looping inside cycles by checking if nodes are already visited.
+
+
+## 
+
 # Bit manipulation
 
 ## Python details
@@ -408,6 +492,37 @@ bin(20) # > '0b10100' # with type string
 # view number from binary string
 int('10101', 2) # > 21 #in base 2
 
+```
+
+# Disjoint Set Union
+
+See [leetcode](https://leetcode.com/problems/redundant-connection/solution/) for tutorial.
+
+Useful to keep track of connected components, and making operations on them (efficiently **joining** them (union operation) and **finding** whether two items belong to same component (find operation) )
+
+The main idea is:
+- initialize a list of parents
+- if parent of node is itself, the node is a lead
+- while parent != node we can recursively search the parent for equality with it's parent to bubble up to the lead of the connected component
+- to perform union, we find the two leads and make one the parent of the other (ideally the one that has the least children should become the parent)
+
+```python
+class DSU(object):
+    def __init__(self, max_value):
+        self.parents =  list(range(max_value))  
+        # self.ranks = [0] * max_value
+
+    def find(self, val):
+        if self.parents[val] == val:
+            return val
+        else:
+            return self.find(self.parents[val])
+    
+    def union(self, value1, value2):
+        lead1 = self.find(value1)
+        lead2 = self.find(value2)
+        # Optionnally keep track of rank and add node with highest rand as parent of the other TODO
+        self.parents[lead1] = lead2
 ```
 
 # Utilities
@@ -455,7 +570,7 @@ import math
 math.factorial(100)
 ```
 
-If have to write it, with loop better then with stack (won't exceed max stack in python which is roughly **1000**).
+If have to write it, with loop better then with (won't exceed max stack in python which is roughly **1000**).
 
 ## Efficient mod
 
@@ -505,6 +620,10 @@ chars = chars.replace(a, b)  # Not in place ! Need to return
 'abc' in 'slabcfj'  # >> True
 ```
 
+> Avoid using the + and += operators to accumulate a string within a loop. Since strings are **immutable**, this creates unnecessary temporary objects and results in quadratic rather than linear running time.
+
+**Solution**: add each substring to a list and ''.join the list after the loop terminates 
+
 # Arrays
 
 ## Manipulating lists
@@ -529,7 +648,21 @@ chars = chars.replace(a, b)  # Not in place ! Need to return
 
 ## Useful itertools
 
+## List methods
+
+```python
+arr = [1, 2, 3, 3, 4]
+arr.pop()  # >> 4, arr -> [1, 2, 3, 4]
+arr.popleft()  # >> 1, arr -> [2, 3, 4]
+del arr[2]  # arr -> [2, 3]
+
+arr = [1, 2, 3, 3, 4]
+del arr[1:3]  # arr -> [1, 3, 4]
 ```
+
+## Useful itertools
+
+```python
 import itertools
 
 ## Generate permutations
@@ -568,6 +701,8 @@ cycle = itertools.cycle('abc')
 
 ### Functional utilities
 
+But in most cases it is better to use for loops or list comprehensions !
+
 ```python
 import functools
 import itertools
@@ -583,4 +718,15 @@ list(itertools.accumulate([1, 2, 3, 4, 5], lambda acc, cur: acc * cur))
 # >> [1, 2, 6, 24, 120]
 functools.reduce(lambda acc, cur: acc * cur, range(1, 5 + 1))
 # >> 120
+```
+
+# Generators
+
+- Example of generator that reverses a string
+
+```python
+def rev_str(my_str):
+    length = len(my_str)
+    for i in range(length - 1,-1,-1):
+        yield my_str[i]
 ```
