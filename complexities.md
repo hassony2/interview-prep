@@ -1,5 +1,7 @@
 # Complexity cheat sheet
 
+[python reference complexities](https://wiki.python.org/moin/TimeComplexity)
+
 ## Array sorting
 
 [cheat_sheet](https://www.bigocheatsheet.com/)
