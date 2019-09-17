@@ -601,7 +601,6 @@ How to solve:
 # Strings
 
 ## Complexity
-
 - immutable
 - theoretically insertion is in O(len(array)) (need to copy whole string to new with more space)
 - in practice, appending to strings is optimized in CPython so that it now runs in O(1) and extends the string in-place.
@@ -634,7 +633,7 @@ chars = chars.replace(a, b)  # Not in place ! Need to return
 - remove items
   - `arr.pop(idx_to_pop)`: Removes item by idx defaults to last element (-1), returns element
   - `arr.remove(val)`: Removes first occurence of value in list: arr.remove(val), returns None
-- `arr.sort(val)`: Inplace sorting, returns None
+- `arr.sort()`: Inplace sorting, returns None
 - `sorted(arr): returns sorted array in **ascending** order
 - `from collections import deque`  *deque* spelled like this !
   - for stack: `append()` and `pop()`
@@ -653,8 +652,7 @@ chars = chars.replace(a, b)  # Not in place ! Need to return
 ```python
 arr = [1, 2, 3, 3, 4]
 arr.pop()  # >> 4, arr -> [1, 2, 3, 4]
-arr.popleft()  # >> 1, arr -> [2, 3, 4]
-del arr[2]  # arr -> [2, 3]
+del arr[2]  # arr -> [1, 2, 3]
 
 arr = [1, 2, 3, 3, 4]
 del arr[1:3]  # arr -> [1, 3, 4]
