@@ -728,3 +728,16 @@ def rev_str(my_str):
     for i in range(length - 1,-1,-1):
         yield my_str[i]
 ```
+
+# Heaps
+
+```
+import heapq
+arr = [23, 1, 67, 3, 2, 4, 5]
+heapq.heapify(arr)
+# > [1, 2, 4, 3, 23, 67, 5]
+heapq.heappop(arr)
+# > 1
+heapq.heappush(arr, 4)
+# > [2, 3, 4, 5, 23, 67, 4]  # Parent of 4 (position 6 is at position (6 - 1) // 2 -> 2, so it is 4 which is <= 4)
+```
