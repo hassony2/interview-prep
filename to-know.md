@@ -746,4 +746,6 @@ heapq.heappop(arr)
 # > 1
 heapq.heappush(arr, 4)
 # > [2, 3, 4, 5, 23, 67, 4]  # Parent of 4 (position 6 is at position (6 - 1) // 2 -> 2, so it is 4 which is <= 4)
+heapq.nsmallest(arr, 3)
+heapq.nlargest(arr, 3)
 ```
