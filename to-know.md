@@ -473,6 +473,12 @@ def djikstra(edges, start_node):
     return distances, parents
 ```
 
+### Complexity
+
+- Optimal with heap and adjacency list
+- (E + V) * log(V)
+  - E + V inner loops, log(V) for getting minimum distance and heapifying
+
 ## BFS
 
 Same as tree except that need to prevent looping inside cycles by checking if nodes are already visited.
