@@ -56,7 +56,7 @@ Like permutations order matters, but only take a subsets instead of whole sequen
   
 ```python
 def arrangements(array, rem_len=1):
-    "" Örder matters!"""
+    """Order matters!"""
     if rem_len == 1:
         return [[item] for item in array]
     else:
