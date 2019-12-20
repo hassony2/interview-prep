@@ -70,6 +70,26 @@ def arrangements(array, rem_len=1):
 arr = [2, 2, 5]
 print(arrangements(arr, 2))
 # >> [[2, 2], [2, 5], [2, 2], [2, 5], [5, 2], [5, 2]]
+
+
+
+def combinations(arr, n, previous=None):
+    """Orders does not matter"""
+    if previous is None:
+        previous = [[]]
+    if n == len(arr):
+        return [arr + prev for prev in previous]
+    if n == 0:
+        return previous
+    else:
+        # Include first element
+        new_combs_with = combinations(arr[1:], n - 1, [[arr[0]] + prev for prev in previous])
+        # Skip first element and continue
+        new_combs_without = combinations(arr[1:], n, previous)
+        return new_combs_with + new_combs_without
+
+
+
 len(combinations(arr))
 # >> math.factorial(len(arr)) / math.factorial(2) 
 ```
