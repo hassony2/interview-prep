@@ -1,12 +1,21 @@
 To Know
 =======
 
+# General interview steps
 
-# Questions to ask
-
-- How large is the data (array, dict, ...)
-- Is there any structure in the data (sorted ? less then some maximum value ?) 
-- Do the values in the structure have a specific meaning ?
+- CLARIFY I/O: Restate or clarify the inputs and outputs in your own words (function parameters, function return type)
+   - Example clarifications
+      - "In what data structure are the inputs provided ?"
+      - are the contents valid / negative / zero / lowercase
+- EXAMPLE: Give a short example of inputs and outputs, this helps check you understood the question and it's also useful to test the code you write later (given this input, the function returns this output)
+- ASSUMPTIONS: State your assumptions, the problem statement doesn't usually contain any 
+   - Example assumptions
+      - do things fit in "memory, How large is the data (array, dict, ...) ?"
+      - are things sorted, how often will the function be run)
+- FIRST: Suggest a first, naive, brute-force solution, walk through how it works, give the time and space complexity (make sure to say it's brute-force and you intend to find something better)
+- SECOND: Suggest a second, better solution, go back and forth with suggestions and clarifications until you reach consensus about what to go ahead and implement, also give the time and space complexity
+- CODE: Write code for the agreed solution, talk through it (handle edge cases at the top of the function, but don't spend too long on them, if they're not trivial leave a comment there and get back to it later)
+- TEST: Run through the code line by line with the example you gave at the start (and ideally a few more examples, including at least one edge case)
 
 
 # Useful semi-advanced python
