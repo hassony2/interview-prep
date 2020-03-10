@@ -195,11 +195,13 @@ Tree traversal :
 **algo**
 
 ```python
+from collections import deque
+
 def bfs(node):
-    queue = [node]  # List is used as queue
+    queue = deque([node])  # Keep track of nodes to visit
     traversed = []
     while queue:
-        node = queue.pop(0)
+        node = queue.popleft()
         traversed.append(node.val)
         for child in node.children:
             queue.append(child)
@@ -487,7 +489,7 @@ def djikstra(edges, start_node):
     parents = {start_node: None}
     while len(to_visit):
         # Sort nodes by current distance to source and select the closest one
-        min_node, min_dist = sorted([(node, distances[node]) for node in to_visit], key=lambda x: x[1])[0]
+        min_node, min_dist = min([(node, distances[node]) for node in to_visit], key=lambda x: x[1])
         to_visit.remove(min_node)
         # Get edges that link selected node and other nodes, and not already visited
         neigh_edges = [edge for edge in edges if edge[0] == min_node and edge[1] not in visited]
