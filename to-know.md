@@ -688,7 +688,7 @@ chars = chars.replace(a, b)  # Not in place ! Need to return
 
 ```python
 arr = [1, 2, 3, 3, 4]
-arr.pop()  # >> 4, arr -> [1, 2, 3, 4]
+arr.pop()  # >> 4, arr -> [1, 2, 3, 3]
 del arr[2]  # arr -> [1, 2, 3]
 
 arr = [1, 2, 3, 3, 4]
