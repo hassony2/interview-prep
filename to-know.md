@@ -281,7 +281,7 @@ def traversal(root):
 def construct_trie(tiles, res=None):
     for char_idx in range(len(tiles)):
         rem_tiles = tiles[:char_idx] + tiles[char_idx + 1:]
-        res[tiles[char_idx]] = construct_tree(rem_tiles, {})
+        res[tiles[char_idx]] = construct_trie(rem_tiles, {})
     return res
     
 def traverse_trie(tree, depth=1):
@@ -298,9 +298,9 @@ def traverse_trie(tree, depth=1):
 
 tiless = ['AAB', 'AB']
 for tiles in tiless:
-    tree = construct_tree(tiles, {})
+    tree = construct_trie(tiles, {})
     print(tree)
-    results = traverse_tree(tree, depth=len(tiles))
+    results = traverse_trie(tree, depth=len(tiles))
     print(results)
     print(len(set(results)))
 ```
