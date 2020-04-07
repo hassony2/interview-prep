@@ -334,9 +334,9 @@ for tiles in tiless:
 ### Implementation
 
 - easiest is to store it as an array with
-  - `parent_idx(idx) = (idx  - 1) // 2
-  - `child_left(idx) = 2 * idx + 1
-  - `child_right(idx) = 2 * idx + 2
+  - `parent_idx(idx) = (idx  - 1) // 2`
+  - `child_left(idx) = 2 * idx + 1`
+  - `child_right(idx) = 2 * idx + 2`
 - two operations:
   - insertion
   - get_min (/get_max)
