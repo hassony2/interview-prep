@@ -1,7 +1,7 @@
 import numpy as np
 import random
 
-def djikstra(edges, start_node):
+def dijkstra(edges, start_node):
     # Get unique nodes
     to_visit = [start_node]
     visited = []
@@ -45,7 +45,7 @@ for node_start in range(node_nb):
             if random.random() < connect_prob:
                 edges.append((node_start, node_end, random.randint(1, max_dist)))
 
-dists, parents = djikstra(edges, 0)
+dists, parents = dijkstra(edges, 0)
 print(edges, dists)
 print(get_path(parents, 2))
 
