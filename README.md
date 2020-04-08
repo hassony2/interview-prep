@@ -45,7 +45,7 @@ This means I was already at least somewhat familiar with most basic data structu
     - Leetcode also has a mock interview mode that is timed and provides a set of 2/3 questions which I found useful because it is closer to the real interview setting (you don't know in advance if the question is hard or not)
     - I would try to solve them in real-conditions, including often speaking to an imaginary interviewer aloud in front of my computer (talking and solving the problem at the same time required some practice)
 -  I did not solve problems from [Cracking the Coding Interview](http://www.crackingthecodinginterview.com/) at this time, but I did go through my notes on the exercises I had solved previously to refresh my memory on these classical exercises
-- I also liked the following list from the [Tech Interview Handbook](https://yangshun.github.io/tech-interview-handbook/best-practice-questions) although I didn't follow the exercises at this time
+- I also liked the following list from the [Tech Interview Handbook](https://yangshun.github.io/tech-interview-handbook/best-practice-questions) although I didn't follow their suggested exercise list
     
 
     
