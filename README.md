@@ -3,7 +3,7 @@
 Coming from a mathematics background with little academic coding training,
 I discovered that internships at companies that I was interested in relied on coding interviews for recruitement, including for research positions during my PhD.
 
-While preparing for coding interviews, I kept notes of useful (to me!) resources, comments and [code snippets](https://github.com/hassony2/interview-prep/blob/master/to-know.md).
+While preparing for coding interviews, I kept notes of useful (to me!) [resources]((https://github.com/hassony2/interview-prep/blob/master/resources.md), comments and [code snippets](https://github.com/hassony2/interview-prep/blob/master/to-know.md).
 
 
 I successfully passed the interviews for Google and Facebook internships 4 months appart, and I found myself giving advice to other PhD students
