@@ -318,7 +318,7 @@ for tiles in tiless:
 
 ### Usages
 
-- priority queues (for instance for djisktra algorithm)
+- priority queues (for instance for Dijsktra's algorithm)
 - sorting (by first creating a heap and then repetitively getting the root we get the sorted array) **not heap sort**
   - complexity (time)
      - create the heap : easy to show that O(n * log(n)) (n insertions of max log(n) steps)
@@ -475,12 +475,12 @@ class HashTable:
 
 # Graphs
 
-## Djikstra
+## Dijkstra (Graph traversal with positive weights)
 
-Run [djikstra_graph](djikstra_graph.py)
+Run [dijkstra_graph](dijkstra_graph.py)
 
 ```python
-def djikstra(edges, start_node):
+def dijkstra(edges, start_node):
     # Get unique nodes
     to_visit = [start_node]
     visited = []
