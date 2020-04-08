@@ -1,6 +1,6 @@
 import numpy as np
 
-def djikstra(adj_matrix, start_idx=0):
+def dijkstra(adj_matrix, start_idx=0):
     visited = []  # Keep track of already visited node idxs
     to_vis = [start_idx]  # Keep track of node idxs that are reachable and not visited yet
 
@@ -29,7 +29,7 @@ def djikstra(adj_matrix, start_idx=0):
     return dists
             
 
-def djikstra_with_path(adj_matrix, start_idx=0):
+def dijkstra_with_path(adj_matrix, start_idx=0):
     visited = []  # Keep track of already visited node idxs
     to_vis = [start_idx]  # Keep track of node idxs that are reachable and not visited yet
 
@@ -73,6 +73,6 @@ adj_matrix = [[2, 1, None, 2, 1],
                [2, None, None, 2, 1],
                [4, 1, None, None, None]]
 
-print(np.array(adj_matrix), djikstra(adj_matrix))
-dists, parents = djikstra_with_path(adj_matrix)
+print(np.array(adj_matrix), dijkstra(adj_matrix))
+dists, parents = dijkstra_with_path(adj_matrix)
 print(np.array(adj_matrix), dists, parents, get_path(parents, 2))
