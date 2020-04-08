@@ -32,7 +32,7 @@ This means I was already at least somewhat familiar with most basic data structu
     - Typically I would end up on a [Geeks for Geeks page](https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/) which I would read
     - I would then rewrite the proposed algorithm, and check that it actually works (through LeetCode or custom test cases)
 - For an overview of more complex algorithms I found the [videos by Abdul Bari](https://www.youtube.com/watch?v=0IAPZzGSbME&list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O) very pedagogical and clear
-    - especially on [Djikstra](https://www.youtube.com/watch?v=XB4MIexjvY0&list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O&index=45), [QuickSort analysis](https://www.youtube.com/watch?v=-qOVVRIZzao&list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O&index=37), [Prims and Kruskals](https://www.youtube.com/watch?v=4ZlRH0eK-qQ&t=29s), [Disjoint Sets data structures](https://www.youtube.com/watch?v=wU6udHRIkcc&list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O&index=17)
+    - especially on [Dijkstra](https://www.youtube.com/watch?v=XB4MIexjvY0&list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O&index=45), [QuickSort analysis](https://www.youtube.com/watch?v=-qOVVRIZzao&list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O&index=37), [Prims and Kruskals](https://www.youtube.com/watch?v=4ZlRH0eK-qQ&t=29s), [Disjoint Sets data structures](https://www.youtube.com/watch?v=wU6udHRIkcc&list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O&index=17)
 
 #### Practice interview questions
 
