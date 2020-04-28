@@ -1,6 +1,6 @@
 def permutations(array):
     if len(array) == 1:
-        return [[array[0]]]
+        return [array]
     else:
         res = []
         for char_idx in range(len(array)):
@@ -20,7 +20,7 @@ def permutations_lc(array):
 
 def combinations(array, rem_len=1):
     if rem_len == 1:
-        return [[item] for item in array]
+        return [array]
     else:
         res = []
         for char_idx in range(len(array)):
