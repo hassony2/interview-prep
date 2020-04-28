@@ -42,10 +42,15 @@ This means I was already at least somewhat familiar with most basic data structu
     - I payed for the Premium account, and sorted the questions by frequency for the company I was targetting
     - I did maybe ~30% easy, 60% medium, 10% hard questions, and would stop when the code would pass the tests
     - Given that for Google you are coding in a Google doc, I would read the question in LeetCode, then write the code in a GDoc, and then copy-paste the code in LeetCode to pass it through the tests
-    - Leetcode also has a mock interview mode that is timed and provides a set of 2/3 questions which I found useful because it is closer to the real interview setting (you don't know in advance if the question is hard or not)
+    - Leetcode also has a mock interview mode that is timed and provides a set of 2/3 questions which I found useful because it is closer to the real interview setting (you don't know in advance if the question is hard or not, which I find is an important prior knowldege which you don't get during the real interview, and a timer)
     - I would try to solve them in real-conditions, including often speaking to an imaginary interviewer aloud in front of my computer (talking and solving the problem at the same time required some practice)
 -  I did not solve problems from [Cracking the Coding Interview](http://www.crackingthecodinginterview.com/) at this time, but I did go through my notes on the exercises I had solved previously to refresh my memory on these classical exercises
 - I also liked the following list from the [Tech Interview Handbook](https://yangshun.github.io/tech-interview-handbook/best-practice-questions) although I didn't follow their suggested exercise list
+
+#### Last minute tips
+
+- One of the best advices I got was to go through [Google's python styleguide](https://google.github.io/styleguide/pyguide.html), which is a great reminder on good coding practices and edge cases of python ([some personal notes](https://github.com/hassony2/interview-prep/blob/master/style_guidelines.md) on this)
+
     
 
     
