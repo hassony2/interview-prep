@@ -5,7 +5,7 @@ I discovered that internships at companies that I was interested in relied on co
 
 Although I code a significant part of the day for my research, preparing for the coding interviews is an entirely different, and very specific exercise.
 
-While preparing for coding interviews, I kept notes of useful (to me!): [resources](https://github.com/hassony2/interview-prep/blob/master/resources.md), comments and [code snippets](https://github.com/hassony2/interview-prep/blob/master/to-know.md).
+While preparing for coding interviews, I kept notes of useful (to me!): [resources](https://github.com/hassony2/interview-prep/blob/master/resources.md), [comments and code snippets](https://github.com/hassony2/interview-prep/blob/master/to-know.md).
 
 I successfully passed the interviews for Google and Facebook internships 4 months appart, and I found myself giving advice to other PhD students about how to prepare for coding interviews.
 
