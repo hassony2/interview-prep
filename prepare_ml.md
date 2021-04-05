@@ -29,3 +29,4 @@ priorities (ordered in reverse of my current weaknesses) stats > ML > Algebra
 - [Machine learning interviews slides](https://docs.google.com/presentation/d/1MX2V6fTp71j1aztvY5HLYM44iLG4HYMrYd4Dxn6Cxnw/edit#slide=id.g2f3b97889d_0_0)
 - [Introduction to Probability](https://ftp.xxcpeter.tech/Probability%20and%20Statistics/Books/Joseph%20K.%20Blitzstein%2C%20Jessica%20Hwang-Introduction%20to%20Probability.pdf) 580 pages + [Exercise solutions](https://projects.iq.harvard.edu/files/stat110/files/selected_solutions_blitzstein_hwang_probability_0.pdf) 
 - [Courses with links to lectures](https://www.archim.org.uk/lecturenotes/part_iii)
+- [detailed proof](https://dawenl.github.io/files/mle_biased.pdf) that sample vairiance is biased: 
