@@ -19,7 +19,7 @@ priorities (ordered in reverse of my current weaknesses) stats > ML > Algebra
 
   - [Statistical foundations of Machine Learning](https://www.researchgate.net/publication/242692234_Statistical_foundations_of_machine_learning_2nd_edition_handbook) ~300 pages
   - https://www.kdnuggets.com/2020/01/data-science-interview-study-guide.html
-  - 
+  - [Super clear notes](https://proceedings.neurips.cc/paper/2007/file/0d3180d672e08b4c5312dcdafdf6ef36-Paper.pdf) from Bottou 2007 paper on expected risk vs empirical risk 
 
 # Exhaustive resources
 
