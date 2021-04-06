@@ -21,6 +21,8 @@ priorities (ordered in reverse of my current weaknesses) stats > ML > Algebra
   - https://www.kdnuggets.com/2020/01/data-science-interview-study-guide.html
   - [Super clear notes](https://proceedings.neurips.cc/paper/2007/file/0d3180d672e08b4c5312dcdafdf6ef36-Paper.pdf) from Bottou 2007 paper on expected risk vs empirical risk 
 
+- [Great cheatsheets from CS229](https://github.com/afshinea/stanford-cs-229-machine-learning/blob/master/en/super-cheatsheet-machine-learning.pdf)
+
 # Exhaustive resources
 
 - [The Deep Learning Book](https://github.com/janishar/mit-deep-learning-book-pdf/blob/master/complete-book-bookmarked-pdf/deeplearningbook.pdf)
