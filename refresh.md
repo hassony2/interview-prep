@@ -2,8 +2,8 @@
 
 - [x] Binary search
 - [x] Quick sort
-- [ ] BFS
-- [ ] DFS
+- [x] BFS
+- [x] DFS
 - [ ] Djikstra
 - [ ] Insert/remove node in linked list
 - [ ] Merge sort
@@ -108,4 +108,67 @@ def test_sort():
 
 test_partition()
 test_sort()
+```
+
+# BFS and DFS
+
+```python
+import pytest
+from collections import deque
+
+
+class Node():
+    def __init__(self, root, children=None):
+        self.value = root
+        if children is None:
+            self.children = []
+        else:
+            self.children = children
+
+def tree_search(node, mode="breadth") -> list:
+    tovisit = deque()
+    tovisit.append(node)
+    flat = []
+    while len(tovisit):
+        if mode == "breadth":
+            # Create queue for breadth first
+            visit_node = tovisit.popleft()
+        elif mode == "depth":
+            # Create stack for depth first
+            visit_node = tovisit.pop()
+        else:
+            raise ValueError(f"{mode} not in [depth|breadth]")
+        flat.append(visit_node.value)
+        if len(visit_node.children):
+            if mode == "breadth":
+                children = visit_node.children
+            elif mode == "depth":
+                # Need to reverse order to traverse from left to right
+                # otherwise still depth-first but from right to left
+                children = reversed(visit_node.children)
+            for child in children:
+                tovisit.append(child)
+    return flat
+            
+    
+def test_bfscomplex():
+    tree = Node(0, [Node(3), Node(2, [Node(5), Node(7)]), Node(4, [Node(1)])])
+    #                    0
+    #               3    2    4
+    #                  /  \   |
+    #                  5  7   1
+    flat_b = tree_search(tree, mode="breadth")
+    assert flat_b == [0, 3, 2, 4, 5, 7, 1]
+    flat_d = tree_search(tree, mode="depth")
+    assert flat_d == [0, 3, 2, 5, 7, 4, 1]
+    
+    
+def test_bfsimple():
+    tree = Node(0, [Node(1)])
+    flat_b = tree_search(tree, mode="breadth")
+    assert flat_b == [0, 1]
+    flat_d = tree_search(tree, mode="depth")
+    assert flat_d == [0, 1]
+Node(3)
+pytest.main()
 ```
