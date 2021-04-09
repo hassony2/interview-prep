@@ -5,7 +5,7 @@
 - [x] BFS
 - [x] DFS
 - [ ] Djikstra
-- [ ] Insert/remove node in linked list
+- [x] Insert/remove node in linked list
 - [ ] Merge sort
 - [ ] Modular rules
 - [ ] Bit manipulation
@@ -170,5 +170,69 @@ def test_bfsimple():
     flat_d = tree_search(tree, mode="depth")
     assert flat_d == [0, 1]
 Node(3)
+pytest.main()
+```
+
+## Linked lists
+
+In-place or with returns ?
+Below example of node removal in singly-linked list in-place
+
+```python
+import pytest
+
+class Node():
+    def __init__(self, value, next_node=None):
+        self.value = value
+        self.next_node = next_node
+        
+    def __repr__(self):
+        toshow = self.get_nodes()
+        return " ".join([str(val) for val in toshow])
+
+    def get_nodes(self):
+        nodes = [self.value]
+        child = self.next_node
+        while child is not None:
+            nodes.append(child.value)
+            child = child.next_node
+        return nodes
+        
+def remove(llist, rm_idx:int):
+    node = llist
+    if rm_idx == 0:
+        # Overwrite first node
+        if node.next_node is None:
+            return None
+        else:
+            node.value = node.next_node.value
+            node.next_node = node.next_node.next_node
+        return
+    # Point to predecessor of node to remove
+    for idx in range(rm_idx - 1):
+        node = node.next_node
+
+    node.next_node = node.next_node.next_node
+    return llist
+
+    
+
+def test_remove():
+    llist = Node(3, Node(4, Node(5, Node(6))))
+    assert llist.get_nodes() == [3, 4, 5, 6]
+    
+    remove(llist, 2)
+    assert llist.get_nodes() == [3, 4, 6]
+    
+    # Remove first node
+    llist = Node(3, Node(4, Node(5, Node(6))))
+    remove(llist, 0)
+    assert llist.get_nodes() == [4, 5, 6]
+    
+    # Remove last node
+    llist = Node(3, Node(4, Node(5, Node(6))))
+    remove(llist, 3)
+    assert llist.get_nodes() == [3, 4, 5]
+    
 pytest.main()
 ```
