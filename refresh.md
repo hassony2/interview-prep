@@ -65,6 +65,7 @@ def partition(array: list, start_idx:int, pivot_idx:int) -> int:
     low_candidate = start_idx
     pivot_val = array[pivot_idx]
 
+    # Ensure all values to the left of low_candidate are < pivot_val
     for idx in range(start_idx, pivot_idx):
         if array[idx] < pivot_val:
             swap(array, idx, low_candidate)
