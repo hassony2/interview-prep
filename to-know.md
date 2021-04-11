@@ -293,7 +293,7 @@ def traverse_trie(tree, depth=1):
     else:
         results.extend(tree.keys())
         for key in tree.keys():
-            results.extend([key + rem for rem in traverse_tree(tree[key], depth=depth-1)])
+            results.extend([key + rem for rem in traverse_trie(tree[key], depth=depth-1)])
     return results
 
 tiless = ['AAB', 'AB']
