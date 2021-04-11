@@ -266,9 +266,9 @@ def traversal(root):
         # Pre-order
         return [root.val] + self.traversal(root.left) + self.traversal(root.right)
         # In-order
-        # return self.traversal(root.left) + [root_val] + self.traversal(root.right)
+        # return traversal(root.left) + [root_val] + traversal(root.right)
         # Post-order
-        # return self.traversal(root.left) + self.traversal(root.right) + [root_val]
+        # return traversal(root.left) + traversal(root.right) + [root_val]
 ```
 
 - [ ] TODO understand why pre-order and post-order together don't allow to reconstruct tree, see [post](https://www.geeksforgeeks.org/if-you-are-given-two-traversal-sequences-can-you-construct-the-binary-tree/), but (pre-order and in-order) or (post-order and in-order) do.
