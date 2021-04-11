@@ -183,7 +183,7 @@ def merge(nums, low, high, mid_idx):
 ```
 
 Complexity
-- time: O(log(n))
+- time: O(nlog(n))
 - space: O(n)
 
 # Trees
