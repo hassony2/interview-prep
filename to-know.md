@@ -17,6 +17,7 @@ To Know
 - CODE: Write code for the agreed solution, talk through it (handle edge cases at the top of the function, but don't spend too long on them, if they're not trivial leave a comment there and get back to it later)
 - TEST: Run through the code line by line with the example you gave at the start (and ideally a few more examples, including at least one edge case)
 
+Pretty much the same advice but in [a video](https://www.youtube.com/watch?v=aClxtDcdpsQ)
 
 # Useful semi-advanced python
 
